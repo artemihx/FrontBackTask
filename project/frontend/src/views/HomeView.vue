@@ -1,11 +1,9 @@
 <script setup>
 
+import GreetingBlock from '@/components/home-page/GreetingBlock.vue'
 </script>
-
 <template>
-  <div class="bg-blue-500 text-white p-4">
-    Котики
-  </div>
+  <greeting-block/>
 </template>
 <style scoped lang="scss">
 

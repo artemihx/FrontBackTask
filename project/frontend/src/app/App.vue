@@ -1,10 +1,12 @@
 <script setup>
+import TheHeader from '@/components/header/TheHeader.vue'
 </script>
 
 <template>
   <main>
     <div class="wrapper">
       <div class="cont">
+        <the-header/>
         <main class="main">
           <router-view v-slot="{ Component }">
             <transition
