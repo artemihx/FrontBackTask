@@ -11,8 +11,19 @@ services:
       networks:
         - network
 
-    php:
-      build: ./php
+    backend-proxy:
+      build:
+        context: ../
+        dockerfile: ./deploy/backend-proxy/Dockerfile
+      container_name: backend-proxy
+      hostname: backend-proxy
+      networks:
+        - network
+
+    backend:
+      build:
+        context: ../
+        dockerfile: ./deploy/php/Dockerfile
       networks:
         - network
       volumes:
@@ -21,6 +32,14 @@ services:
         sh -c "chown -R www-data:www-data /var/www/public &&
                chmod -R 755 /var/www/public &&
                php-fpm"
+    frontend:
+      build:
+        context: ../
+        dockerfile: ./deploy/frontend/Dockerfile
+      container_name: frontend
+      hostname: frontend
+      networks:
+        - network
 
     postgres:
       image: postgres:alpine
