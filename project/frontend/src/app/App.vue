@@ -1,5 +1,6 @@
 <script setup>
 import TheHeader from '@/components/header/TheHeader.vue'
+import TheFooter from "@/components/footer/TheFooter.vue";
 </script>
 
 <template>
@@ -17,6 +18,7 @@ import TheHeader from '@/components/header/TheHeader.vue'
             </transition>
           </router-view>
         </main>
+        <the-footer/>
       </div>
     </div>
   </main>
