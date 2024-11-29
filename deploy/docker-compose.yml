@@ -24,14 +24,15 @@ services:
       build:
         context: ../
         dockerfile: ./deploy/php/Dockerfile
-      networks:
-        - network
       volumes:
         - ../project/backend:/var/www/public
       command: >
         sh -c "chown -R www-data:www-data /var/www/public &&
                chmod -R 755 /var/www/public &&
                php-fpm"
+      networks:
+        - network
+
     frontend:
       build:
         context: ../
@@ -45,6 +46,7 @@ services:
 
     postgres:
       image: postgres:alpine
+      container_name: postgres
       environment:
         POSTGRES_DB: ${POSTGRES_DB:-postgres}
         POSTGRES_USER: ${POSTGRES_USER:-postgres}
