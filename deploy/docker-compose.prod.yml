@@ -26,20 +26,13 @@ services:
         dockerfile: ./deploy/php/Dockerfile
       networks:
         - network
-      volumes:
-        - ../project/backend:/var/www/public
-      command: >
-        sh -c "chown -R www-data:www-data /var/www/public &&
-               chmod -R 755 /var/www/public &&
-               php-fpm"
+
     frontend:
       build:
         context: ../
         dockerfile: ./deploy/frontend/Dockerfile
       container_name: frontend
       hostname: frontend
-      volumes:
-        - ../project/frontend:/app
       networks:
         - network
 
@@ -51,15 +44,6 @@ services:
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       ports:
         - '5432:5432'
-      volumes:
-        - pgdata:/var/lib/postgresql/data
-      networks:
-        - network
-
-    adminer:
-      image: adminer:latest
-      ports:
-        - '${ADMINER_PORT:-8080}:8080'
       networks:
         - network
 
