@@ -34,7 +34,7 @@ onMounted(fetchData);
           v-if="data"
           class="header__city"
         >
-          <b>Город</b> - Томск {{ data }}
+          <b>Город</b> - Т {{ data }}
         </span>
       </div>
     </div>

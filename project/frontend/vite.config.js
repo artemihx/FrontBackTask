@@ -10,10 +10,11 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  assetsInclude: ['**/*.ttf'],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '~fonts': fileURLToPath(new URL('./public/fonts', import.meta.url))
+      '~fonts': fileURLToPath(new URL('./fonts', import.meta.url))
     },
   },
   css:{

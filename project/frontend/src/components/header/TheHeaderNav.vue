@@ -19,19 +19,15 @@
     </a>
 
     <div class="flex gap-1">
-      <a
+      <router-link
+        to="register"
         class="header__link"
         href="#"
       >
         Вход
-      </a>
-      &frasl;
-      <a
-        class="header__link"
-        href="#"
-      >
+        &frasl;
         Регистрация
-      </a>
+      </router-link>
     </div>
   </nav>
 </template>
@@ -41,7 +37,7 @@
   a{
     transition: all 0.3s ease;
     &:hover{
-      transform: scale(1.05);
+      color: $black;
     }
   }
 }
