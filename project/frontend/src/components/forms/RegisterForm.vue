@@ -63,7 +63,7 @@ const [avatar, avatarAttrs] = defineField("avatar");
 //   authStore.register(formData);
 // });
 const submit = handleSubmit((values) => {
-  authStore.register({ email: values.email, password: values.password, name: values.name,phone: values.phone })})
+  authStore.register({ name: values.name, password: values.password, email: values.email, phone: values.phone })})
 
 const goHome = () => {
   isAuthenticated.value ? router.push("/") : null;
