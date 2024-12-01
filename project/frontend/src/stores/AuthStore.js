@@ -17,8 +17,7 @@ export const useAuthStore = defineStore('auth', () => {
             const response = await api.post(`login`, credentials);
             console.log(response)
             console.log(response.data)
-            console.log(response.data.data)
-            token.value = response.data.data.user_token;
+            token.value = response.data.user_token;
             localStorage.setItem('token', token.value);
             loginError.value = null;
             await toastNotification("Вы авторизовались!","success")
@@ -40,8 +39,7 @@ export const useAuthStore = defineStore('auth', () => {
             const response = await api.post(`register`, credentials);
             console.log(response)
             console.log(response.data)
-            console.log(response.data.data)
-            token.value = response.data.data.user_token;
+            token.value = response.data.user_token;
             localStorage.setItem('token', token.value);
             toastNotification("Вы зарегистрировались","success")
             setTimeout(()=>{
