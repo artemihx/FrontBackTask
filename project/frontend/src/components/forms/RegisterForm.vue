@@ -51,17 +51,6 @@ const [phone, phoneAttrs] = defineField("phone");
 const [password, passwordAttrs] = defineField("password");
 const [avatar, avatarAttrs] = defineField("avatar");
 
-// const submit = handleSubmit((values) => {
-//   const formData = new FormData();
-//   formData.append("name", values.name);
-//   formData.append("email", values.email);
-//   formData.append("phone", values.phone);
-//   formData.append("password", values.password);
-//   // if (values.avatar) {
-//   //   formData.append("avatar", values.avatar);
-//   // }
-//   authStore.register(formData);
-// });
 const submit = handleSubmit((values) => {
   authStore.register({ name: values.name, password: values.password, email: values.email, phone: values.phone })})
 

@@ -4,6 +4,7 @@ import RoomCard from "@/components/room/RoomCard.vue";
 import ReviewItem from "@/components/home-page/ReviewItem.vue";
 import AboutUsItem from "@/components/home-page/AboutUsItem.vue";
 import ContactForm from "@/components/home-page/ContactForm.vue";
+import TheHomeSlider from "@/components/home-page/TheHomeSlider.vue";
 </script>
 <template>
   <greeting-block/>
@@ -17,6 +18,7 @@ import ContactForm from "@/components/home-page/ContactForm.vue";
       />
     </div>
   </section>
+  <the-home-slider/>
   <section id="reviews" class="reviews">
     <h2>Отзывы наших клиентов</h2>
     <div class="review__container">

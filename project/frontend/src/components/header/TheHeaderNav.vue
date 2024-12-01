@@ -11,7 +11,7 @@ const authStore = useAuthStore();
   <nav class="header__menu flex gap-8">
     <a
       class="header__link"
-      href="#"
+      href="#about"
     >
       О нас
     </a>
@@ -24,10 +24,10 @@ const authStore = useAuthStore();
         Каталог номеров
       </a>
       <button
-        class="flex p-2 bg-black rounded text-white uppercase hover:bg-blue-200 hover:text-black ease-in-out duration-300"
+        class="header__link"
         @click="authStore.logout"
       >
-        выйти
+        Выйти
       </button>
     </template>
     

@@ -10,14 +10,10 @@ export const useAuthStore = defineStore('auth', () => {
     const router = useRouter()
     const loginError = ref(null);
 
-
-
     const login = async (credentials) => {
         try {
             const response = await api.post(`login`, credentials);
-            console.log(response)
             console.log(response.data)
-            token.value = response.data.user_token;
             localStorage.setItem('token', token.value);
             loginError.value = null;
             await toastNotification("Вы авторизовались!","success")
