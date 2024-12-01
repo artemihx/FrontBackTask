@@ -32,6 +32,8 @@ services:
                php-fpm"
       networks:
         - network
+      depends_on:
+        - postgres
 
     frontend:
       build:

@@ -26,4 +26,6 @@ RUN chown -R www-data:www-data /var/www
 
 WORKDIR /var/www/public
 
+COPY ./project/backend .
 
+RUN composer install
