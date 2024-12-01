@@ -66,7 +66,6 @@ const submit = handleSubmit((values) => {
 const goHome = () => {
   isAuthenticated.value ? router.push("/") : null;
 };
-console.log(avatar.value)
 </script>
 
 
