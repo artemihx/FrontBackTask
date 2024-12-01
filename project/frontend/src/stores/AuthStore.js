@@ -15,6 +15,9 @@ export const useAuthStore = defineStore('auth', () => {
     const login = async (credentials) => {
         try {
             const response = await api.post(`login`, credentials);
+            console.log(response)
+            console.log(response.data)
+            console.log(response.data.data)
             token.value = response.data.data.user_token;
             localStorage.setItem('token', token.value);
             loginError.value = null;
@@ -34,7 +37,10 @@ export const useAuthStore = defineStore('auth', () => {
 
     const register = async (credentials) => {
         try {
-            const response = await api.post(`signup`, credentials);
+            const response = await api.post(`register`, credentials);
+            console.log(response)
+            console.log(response.data)
+            console.log(response.data.data)
             token.value = response.data.data.user_token;
             localStorage.setItem('token', token.value);
             toastNotification("Вы зарегистрировались","success")

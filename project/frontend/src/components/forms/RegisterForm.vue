@@ -51,17 +51,19 @@ const [phone, phoneAttrs] = defineField("phone");
 const [password, passwordAttrs] = defineField("password");
 const [avatar, avatarAttrs] = defineField("avatar");
 
+// const submit = handleSubmit((values) => {
+//   const formData = new FormData();
+//   formData.append("name", values.name);
+//   formData.append("email", values.email);
+//   formData.append("phone", values.phone);
+//   formData.append("password", values.password);
+//   // if (values.avatar) {
+//   //   formData.append("avatar", values.avatar);
+//   // }
+//   authStore.register(formData);
+// });
 const submit = handleSubmit((values) => {
-  const formData = new FormData();
-  formData.append("name", values.name);
-  formData.append("email", values.email);
-  formData.append("phone", values.phone);
-  formData.append("password", values.password);
-  if (values.avatar) {
-    formData.append("avatar", values.avatar);
-  }
-  authStore.register(formData);
-});
+  authStore.register({ email: values.email, password: values.password, name: values.name,phone: values.phone })})
 
 const goHome = () => {
   isAuthenticated.value ? router.push("/") : null;
