@@ -30,7 +30,7 @@
         >
       </a>
       <a
-        href="#"
+        href="#gallery"
         class="footer__list-item"
       >
         Фотогалерея

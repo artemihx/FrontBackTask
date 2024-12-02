@@ -130,6 +130,7 @@ const goHome = () => {
       name="password"
       placeholder="Пароль"
       required
+      autocomplete="on"
     />
     <p
       v-if="errors.password"
