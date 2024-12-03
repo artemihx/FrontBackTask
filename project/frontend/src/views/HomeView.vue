@@ -1,6 +1,6 @@
 <script setup>
 import GreetingBlock from '@/components/home-page/GreetingBlock.vue'
-import RoomCard from "@/components/room/RoomCard.vue";
+import RoomHomeCard from "@/components/room/RoomHomeCard.vue";
 import ReviewItem from "@/components/home-page/ReviewItem.vue";
 import AboutUsItem from "@/components/home-page/AboutUsItem.vue";
 import ContactForm from "@/components/home-page/ContactForm.vue";
@@ -11,7 +11,7 @@ import TheHomeSlider from "@/components/home-page/TheHomeSlider.vue";
   <section id="rooms" class="rooms">
     <h2 class="rooms__title">Номера и цены</h2>
     <div class="rooms__block">
-      <room-card
+      <room-home-card
         v-for="room in 4"
         :key="room"
         :room="room"

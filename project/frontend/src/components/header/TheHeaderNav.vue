@@ -17,12 +17,12 @@ const authStore = useAuthStore();
     </a>
     
     <template v-if="isAuthenticated">
-      <a
+      <router-link
         class="header__link"
-        href="#"
+        to="/catalog"
       >
         Каталог номеров
-      </a>
+      </router-link>
       <button
         class="header__link"
         @click="authStore.logout"
