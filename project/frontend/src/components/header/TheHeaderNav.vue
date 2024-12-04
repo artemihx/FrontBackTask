@@ -15,14 +15,13 @@ const authStore = useAuthStore();
     >
       О нас
     </a>
-    
+    <router-link
+      class="header__link"
+      to="/catalog"
+    >
+      Каталог номеров
+    </router-link>
     <template v-if="isAuthenticated">
-      <router-link
-        class="header__link"
-        to="/catalog"
-      >
-        Каталог номеров
-      </router-link>
       <button
         class="header__link"
         @click="authStore.logout"
