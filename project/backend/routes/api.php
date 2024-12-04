@@ -15,9 +15,12 @@ Route::get('/header', [HeaderController::class, 'index']);
 Route::get('/rooms', [RoomController::class, 'index']);
 Route::get('/rooms/{room}', [RoomController::class, 'show']);
 
+
+
 Route::group(['middleware' => 'auth:sanctum'], function (){
     Route::get('/logout', [AuthController::class, 'logout']);
-    Route::get('/user/{user}', [AuthController::class, 'user']);
+    Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/updatePhoto', [AuthController::class, 'updateAvatar']);
 });
 
 // Обновление (авторизованные админы)
