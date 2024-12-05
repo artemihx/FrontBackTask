@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Actions\LoginUserAction;
 use App\Http\Actions\RegisterUserAction;
+use App\Http\Actions\UpdateAvatarUserAction;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,16 +22,13 @@ class AuthController extends Controller
 
     public function updateAvatar(Request $request): JsonResponse
     {
-        $photo = $request->file('photo');
-        Storage::disk('public')->put('avatars/' . $photo->hashName(), file_get_contents($photo));
-        auth()->user()->update(['photo' => 'avatars/' . $photo->hashName()]);
-        return response()->json(['avatar' => $photo->hashName()]);
+        $avatar = UpdateAvatarUserAction::execute($request);
+        return response()->json(['avatar' => $avatar], 201);
     }
 
     public function user()
     {
-        // return Storage::disk('public')->files(auth()->user()->photo);
-        return response()->json(Storage::disk('public')->files('avatars/'));
+        return response()->json(auth()->user());
     }
 
     public function login(LoginRequest $request)

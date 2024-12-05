@@ -18,7 +18,7 @@ return new class extends Migration
             $table->decimal('height');
             $table->decimal('length');
             $table->decimal('price');
-            $table->boolean('on_main')->nullable();
+            $table->boolean('on_main')->default(false);
             $table->string('photo')->nullable();
             $table->timestamps();
         });
