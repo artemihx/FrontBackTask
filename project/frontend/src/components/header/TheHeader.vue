@@ -4,8 +4,10 @@ import TheHeaderNav from '@/components/header/TheHeaderNav.vue'
 
 import { useHeaderStore } from "@/stores/HeaderStore.js";
 import {onMounted} from "vue";
-const headerStore = useHeaderStore();
+import {storeToRefs} from "pinia";
+
 const { getHeader } = useHeaderStore();
+const { city, slogan } = storeToRefs(useHeaderStore())
 
 onMounted(async () => {
   await getHeader();
@@ -15,7 +17,7 @@ onMounted(async () => {
 
 <template>
   <header
-    v-if="headerStore.city"
+    v-if="city"
     class="header"
   >
     <div class="flex justify-between">
@@ -25,11 +27,11 @@ onMounted(async () => {
         <span
           class="header__city"
         >
-          <b>Город</b> - {{ headerStore.city }}
+          <b>Город</b> - {{ city }}
         </span>
       </div>
     </div>
-    <span class="header__slogan">{{ headerStore.slogan }}</span>
+    <span class="header__slogan">{{ slogan }}</span>
   </header>
 </template>
 

@@ -24,7 +24,7 @@
         class="flex flex-col items-center"
       >
         <img
-          src="../../assets/images/home-page/footer-logo.svg"
+          src="@/assets/images/home-page/footer-logo.svg"
           alt="Kuksik Logo"
           class="h-32"
         >

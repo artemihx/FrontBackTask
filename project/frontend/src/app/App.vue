@@ -14,7 +14,7 @@ import TheFooter from "@/components/footer/TheFooter.vue";
               name="fade"
               mode="out-in"
             >
-              <component :is="Component"/>
+              <component :is="Component" />
             </transition>
           </router-view>
         </main>
@@ -29,13 +29,15 @@ import TheFooter from "@/components/footer/TheFooter.vue";
 .fade-leave-from {
   opacity: 1;
 }
+
 .fade-enter-from,
-.fade-leave-to{
+.fade-leave-to {
   opacity: 0;
 }
 
 .fade-enter-active,
-.fade-leave-active{
+.fade-leave-active {
   transition: opacity 0.3s ease-out;
 }
+
 </style>

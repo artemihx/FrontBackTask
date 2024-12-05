@@ -5,7 +5,7 @@
 <template>
   <article class="room">
     <img
-      src="../../assets/images/no-image.png"
+      src="@/assets/images/no-image.png"
       alt="image"
     >
     <div class="room__info">

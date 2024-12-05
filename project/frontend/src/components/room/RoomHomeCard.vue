@@ -6,7 +6,7 @@ import ReservedButton from "@/components/home-page/ReservedButton.vue";
   <div class="room">
     <h3 class="room-title">Комфорт</h3>
     <img
-      src="../../assets/images/room-card-img.jpeg"
+      src="@/assets/images/room-card-img.jpeg"
       alt="room"
     >
     <ul class="room-features">

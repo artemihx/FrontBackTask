@@ -1,7 +1,7 @@
 <template>
   <router-link to="/">
     <img
-      src="../../assets/icons/logo.svg"
+      src="@/assets/icons/logo.svg"
       class="header__logo"
       alt="kuksik"
     >

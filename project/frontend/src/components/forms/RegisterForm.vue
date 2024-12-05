@@ -27,7 +27,7 @@ const yupValidationSchema = yup.object({
       .min(8, "Минимум 8 символов")
       .matches(/[A-Za-z\d@$!%*?&]/, "Пароль должен содержать буквы, цифры или спецсимволы")
       .required("Поле является обязательным"),
-  avatar: yup
+  photo: yup
       .mixed()
       .test(
           "fileSize",
@@ -49,10 +49,16 @@ const [name, nameAttrs] = defineField("name");
 const [email, emailAttrs] = defineField("email");
 const [phone, phoneAttrs] = defineField("phone");
 const [password, passwordAttrs] = defineField("password");
-const [avatar, avatarAttrs] = defineField("avatar");
+const [photo, photoAttrs] = defineField("photo");
 
 const submit = handleSubmit((values) => {
-  authStore.register({ name: values.name, password: values.password, email: values.email, phone: values.phone })})
+  authStore.register({
+    name: values.name,
+    password: values.password,
+    email: values.email,
+    phone: values.phone,
+    photo: values.photo
+  })})
 
 const goHome = () => {
   isAuthenticated.value ? router.push("/") : null;
@@ -140,18 +146,18 @@ const goHome = () => {
     </p>
 
     <input
-      id="avatar"
-      v-bind="avatarAttrs"
+      id="photo"
+      v-bind="photoAttrs"
       type="file"
-      name="avatar"
+      name="photo"
       accept="image/jpeg, image/png"
-      @change="(e) => (avatar.value = e.target.files[0])"
+      @change="(e) => (photo.value = e.target.files[0])"
     />
     <p
-      v-if="errors.avatar"
+      v-if="errors.photo"
       class="error-message"
     >
-      {{ errors.avatar }}
+      {{ errors.photo }}
     </p>
 
     <button
