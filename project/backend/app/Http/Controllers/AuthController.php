@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Actions\LoginUserAction;
 use App\Http\Actions\RegisterUserAction;
+use App\Http\Actions\UpdateAvatarUserAction;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -14,6 +18,17 @@ class AuthController extends Controller
     {
         $token = RegisterUserAction::execute($request);
         return response()->json(['user_token' => $token], 201);
+    }
+
+    public function updateAvatar(Request $request): JsonResponse
+    {
+        $avatar = UpdateAvatarUserAction::execute($request);
+        return response()->json(['avatar' => $avatar], 201);
+    }
+
+    public function user()
+    {
+        return response()->json(auth()->user());
     }
 
     public function login(LoginRequest $request)
