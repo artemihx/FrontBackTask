@@ -52,13 +52,17 @@ const [password, passwordAttrs] = defineField("password");
 const [photo, photoAttrs] = defineField("photo");
 
 const submit = handleSubmit((values) => {
-  authStore.register({
-    name: values.name,
-    password: values.password,
-    email: values.email,
-    phone: values.phone,
-    photo: values.photo
-  })})
+  const formData = new FormData();
+  formData.append("name", values.name);
+  formData.append("email", values.email);
+  formData.append("phone", values.phone);
+  formData.append("password", values.password);
+
+  if (values.photo) {
+    formData.append("photo", values.photo);
+  }
+  authStore.register(formData);
+});
 
 const goHome = () => {
   isAuthenticated.value ? router.push("/") : null;

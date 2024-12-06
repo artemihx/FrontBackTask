@@ -30,23 +30,27 @@ export const useAuthStore = defineStore('auth', () => {
         }
     };
 
-    const register = async (credentials) => {
+    const register = async (formData) => {
         try {
-            const response = await api.post(`register`, credentials);
-            console.log(response)
-            console.log(response.data)
+            const response = await api.post(`register`, formData, {
+                headers: { "Content-Type": "multipart/form-data" },
+            });
+            console.log(response);
+            console.log(response.data);
+
             token.value = response.data.user_token;
             localStorage.setItem('token', token.value);
-            toastNotification("Вы зарегистрировались","success")
-            setTimeout(()=>{
-                router.push('/')
-            },1500)
-        } catch (error) {
-            toastNotification("Ошибка при регистрации", "error")
-            console.error('Ошибка при регистрации:', error);
-        }
 
+            toastNotification("Вы зарегистрировались", "success");
+            setTimeout(() => {
+                router.push('/');
+            }, 1500);
+        } catch (error) {
+            toastNotification("Ошибка при регистрации", "error");
+            console.error('Ошибка при регистрации:', error.response?.data || error);
+        }
     };
+
 
     const isAuthenticated = computed(() => !!token.value);
 
