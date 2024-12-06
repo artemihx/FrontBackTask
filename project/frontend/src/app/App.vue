@@ -7,22 +7,28 @@ import TheFooter from "@/components/footer/TheFooter.vue";
   <main>
     <div class="wrapper">
       <div class="cont">
-        <the-header/>
+        <the-header />
         <main class="main">
-          <router-view v-slot="{ Component }">
+          <router-view
+            v-slot="{ Component }"
+          >
             <transition
               name="fade"
               mode="out-in"
             >
-              <component :is="Component" />
+              <component
+                :is="Component"
+                v-if="Component"
+              />
             </transition>
           </router-view>
         </main>
-        <the-footer/>
+        <the-footer />
       </div>
     </div>
   </main>
 </template>
+
 
 <style scoped lang="scss">
 .fade-enter-to,

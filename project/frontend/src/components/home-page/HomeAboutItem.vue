@@ -20,7 +20,7 @@
     >
       <img
         alt="telegram"
-        src="../../assets/images/home-page/telegram.svg"
+        src="@/assets/images/home-page/telegram.svg"
       >
     </a>
     <a
@@ -29,7 +29,7 @@
     >
       <img
         alt="vk"
-        src="../../assets/images/home-page/vk.svg"
+        src="@/assets/images/home-page/vk.svg"
       >
     </a>
     <a
@@ -38,7 +38,7 @@
     >
       <img
         alt="whatsapp"
-        src="../../assets/images/home-page/whatsapp.svg"
+        src="@/assets/images/home-page/whatsapp.svg"
       >
     </a>
   </div>

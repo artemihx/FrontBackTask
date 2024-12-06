@@ -1,5 +1,5 @@
 <script setup>
-import ReservedButton from "@/components/home-page/ReservedButton.vue";
+import ReservedButton from "@/components/button/ReservedButton.vue";
 </script>
 
 <template>

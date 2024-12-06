@@ -9,21 +9,21 @@ const { isAuthenticated } = storeToRefs(useAuthStore());
   <router-link
     v-if="isAuthenticated"
     to="/catalog"
-    class="greeting__link"
+    class="link"
   >
     Забронировать
   </router-link>
   <router-link
     v-else
     to="/register"
-    class="greeting__link"
+    class="link"
   >
     Забронировать
   </router-link>
 </template>
 
 <style scoped lang="scss">
-.greeting__link{
+.link{
   @apply flex items-center text-white p-2.5 justify-center max-w-48 tracking-wide rounded-lg;
   background: $green;
   color: $white !important;
