@@ -130,7 +130,6 @@ const goHome = () => {
     >
       {{ errors.phone }}
     </p>
-
     <input
       v-bind="passwordAttrs"
       id="password"
