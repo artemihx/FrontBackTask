@@ -3,7 +3,7 @@ import {computed, ref} from "vue";
 import {useRouter} from "vue-router";
 import {api} from "@/shared/index.js";
 import {toastNotification} from "@/shared/functions.js";
-
+import axios from "axios";
 
 export const useAuthStore = defineStore('auth', () => {
     const token = ref(localStorage.getItem('token') || null);
@@ -32,7 +32,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const register = async (formData) => {
         try {
-            const response = await api.post(`register`, formData, {
+            const response = await axios.post("http://localhost:8081/api/register", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             console.log(response);
