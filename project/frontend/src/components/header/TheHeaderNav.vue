@@ -9,12 +9,6 @@ const authStore = useAuthStore();
 
 <template>
   <nav class="header__menu flex gap-8">
-    <a
-      class="header__link"
-      href="#about"
-    >
-      О нас
-    </a>
     <router-link
       class="header__link"
       to="/catalog"
@@ -22,6 +16,13 @@ const authStore = useAuthStore();
       Каталог номеров
     </router-link>
     <template v-if="isAuthenticated">
+      <router-link
+        class="header__link"
+        to="/profile"
+      >
+        Профиль
+      </router-link>
+
       <button
         class="header__link"
         @click="authStore.logout"

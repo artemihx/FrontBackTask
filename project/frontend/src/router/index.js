@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { HomeView, RegisterView, CatalogView } from '@/views/index.js'
+import { HomeView, NotFoundView, RegisterView, CatalogView, ProfileView } from '@/views/index.js'
 
 const routes = [
   { name: 'home', path: '/', component: HomeView },
+  { name: 'not-found', path: '/:pathMatch(.*)*', component: NotFoundView },
   { name: 'register', path: '/register', component: RegisterView },
   { name: 'catalog', path: '/catalog', component: CatalogView },
+  { name: 'profile', path: '/profile', component: ProfileView }
 ]
 
 const router = createRouter({
@@ -19,7 +21,7 @@ const router = createRouter({
             element.scrollIntoView({ behavior: 'smooth' });
           }
           resolve({ el: to.hash });
-        }, 300); // Убедитесь, что элемент доступен после рендеринга
+        }, 300);
       });
     }
     return { top: 0 };
