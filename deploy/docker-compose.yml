@@ -17,6 +17,8 @@ services:
         dockerfile: ./deploy/backend-proxy/Dockerfile
       container_name: backend-proxy
       hostname: backend-proxy
+      volumes:
+        - ../project/backend/storage/app/public/:/var/www/public/storage/app/public
       networks:
         - network
 
