@@ -31,13 +31,13 @@ class RoomController extends Controller
         $sortOrder = $request->input('sort_order', 'asc');
         $query->orderBy($sortBy, $sortOrder);
 
-        $rooms = $query->with('equipment')->get();
+        $rooms = $query->with(['equipment', 'photos'])->get();
 
         return new JsonResponse($rooms, 200);
     }
     public function show(HotelRoom $room): JsonResponse
     {
-        $room->load('equipment');
+        $room->load(['equipment', 'photos']);
         return new JsonResponse($room, 200);
     }
 }
