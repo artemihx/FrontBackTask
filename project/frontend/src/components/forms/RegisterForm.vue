@@ -9,9 +9,8 @@ const { isAuthenticated } = storeToRefs(useAuthStore());
 const authStore = useAuthStore();
 const router = useRouter();
 
-
 const { defineField, errors, handleSubmit } = useForm({
-    validationSchema: registrationSchema
+  validationSchema: registrationSchema,
 });
 
 const [name, nameAttrs] = defineField("name");
@@ -20,6 +19,24 @@ const [phone, phoneAttrs] = defineField("phone");
 const [password, passwordAttrs] = defineField("password");
 const [photo, photoAttrs] = defineField("photo");
 
+const handlePhotoUpload = (e) => {
+  photo.value = e.target.files[0];
+};
+
+const validatePhoto = (file) => {
+  if (!file) return true; // Фото необязательно
+  if (file.size > 2097152) {
+    errors.photo = "Файл не должен превышать 2MB";
+    return false;
+  }
+  if (!["image/jpeg", "image/png"].includes(file.type)) {
+    errors.photo = "Файл должен быть формата jpeg или png";
+    return false;
+  }
+  errors.photo = null;
+  return true;
+};
+
 const submit = handleSubmit((values) => {
   const formData = new FormData();
   formData.append("name", values.name);
@@ -27,14 +44,15 @@ const submit = handleSubmit((values) => {
   formData.append("phone", values.phone);
   formData.append("password", values.password);
 
-  if (values.photo) {
-    formData.append("photo", values.photo);
+  if (photo.value) {
+    formData.append("photo", photo.value);
   }
+
   authStore.register(formData);
 });
 
 const goHome = () => {
-  isAuthenticated.value ? router.push("/") : null;
+  if (isAuthenticated.value) router.push("/");
 };
 </script>
 
@@ -119,11 +137,11 @@ const goHome = () => {
 
     <input
       id="photo"
-      v-bind="photoAttrs"
       type="file"
       name="photo"
       accept="image/jpeg, image/png"
-      @change="(e) => (photo.value = e.target.files[0])"
+      v-bind="photoAttrs"
+      @change="handlePhotoUpload"
     />
     <p
       v-if="errors.photo"
@@ -132,9 +150,10 @@ const goHome = () => {
       {{ errors.photo }}
     </p>
 
+
     <button
-      :disabled="errors.name || errors.email || errors.phone || errors.password"
-      :class="{ 'error-button': errors.name || errors.email || errors.phone || errors.password }"
+      :disabled="errors.name || errors.email || errors.phone || errors.password || errors.photo"
+      :class="{ 'error-button': errors.name || errors.email || errors.phone || errors.password || errors.photo }"
       type="submit"
       @click="goHome"
     >

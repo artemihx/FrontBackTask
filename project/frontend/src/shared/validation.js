@@ -20,14 +20,11 @@ export const registrationSchema = yup.object({
         .required("Поле является обязательным"),
     photo: yup
         .mixed()
-        .test(
-            "fileSize",
-            "Файл не должен превышать 2MB",
-            (value) => !value || (value.size && value.size <= 2097152)
-        )
-        .test(
-            "fileFormat",
-            "Файл должен быть формата jpeg или png",
-            (value) => !value || ["image/jpeg", "image/png"].includes(value.type)
-        )
+        .test("fileSize", "Файл не должен превышать 2MB", (file) => {
+            return !file || (file && file.size <= 2097152);
+        })
+        .test("fileType", "Файл должен быть формата jpeg или png", (file) => {
+            return !file || (file && ["image/jpeg", "image/png"].includes(file.type));
+        }),
+
 });

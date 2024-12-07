@@ -1,29 +1,47 @@
 <script setup>
-
+const props = defineProps({
+  room:{
+    type: Object,
+    required: true
+  }
+})
+console.log(props.room);
 </script>
 
 <template>
-  <article class="room">
+  <article
+    v-if="room"
+    class="room"
+  >
     <img
+      v-if="room.photos && room.photos.length > 0"
+      :src="room.photos[0].photo"
+      alt="room-image"
+    >
+    <img
+      v-else
       src="@/assets/images/no-image.png"
-      alt="image"
+      alt="no-image"
     >
     <div class="room__info">
       <h2 class="room__title">
         <span>Номер:</span>
-        Люкс
+        {{ room.name }}
       </h2>
-      <p class="room__size">Площадь: 240 кв.м.</p>
+      <p class="room__size">Площадь: {{ room.area }} кв.м.</p>
       <p class="room__list-title">Оснащение номера:</p>
       <ul class="room__list">
-        <li class="room__list-item">Отопление</li>
-        <li class="room__list-item">3 кровати</li>
-        <li class="room__list-item">Когтеточка</li>
-        <li class="room__list-item">Игры с питомцем</li>
+        <li
+          v-for="item in room.equipment"
+          :key="item.id"
+          class="room__list-item"
+        >
+          {{ item.name }}
+        </li>
       </ul>
       <p class="room__price">
         <span>Стоимость за сутки:</span>
-        150 руб.
+        {{ room.price }} руб.
       </p>
     </div>
   </article>
@@ -37,6 +55,7 @@
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   img{
     width: 350px;
+    height: 350px;
   }
   &__info{
     @apply flex flex-col;

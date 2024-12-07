@@ -2,6 +2,16 @@
 import RoomCatalogCard from "@/components/room/RoomCatalogCard.vue";
 import CatalogFilters from "@/components/catalog/CatalogFilters.vue";
 import CatalogSorting from "@/components/catalog/СatalogSorting.vue"
+import { onMounted } from "vue";
+import { useCatalogStore } from "@/stores/CatalogStore.js";
+
+const catalogStore = useCatalogStore();
+const { getRooms } = useCatalogStore();
+
+
+onMounted(async () => {
+  await getRooms();
+})
 </script>
 
 <template>
@@ -12,8 +22,8 @@ import CatalogSorting from "@/components/catalog/СatalogSorting.vue"
         class="rooms"
       >
         <room-catalog-card
-          v-for="room in 3"
-          :key="room"
+          v-for="room in catalogStore.rooms"
+          :key="room.id"
           :room="room"
         />
       </section>
