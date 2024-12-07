@@ -16,6 +16,17 @@ class HotelRoom extends Model
         'height',
         'length',
         'price',
-        'on_main'
+        'on_main',
     ];
+
+    protected $appends = ['area'];
+
+    public function getAreaAttribute()
+    {
+        return $this->width * $this->length;
+    }
+    public function equipment()
+    {
+        return $this->belongsToMany(RoomEquipment::class, 'hotel_rooms_equipment', 'hotel_room_id', 'equipment_id');
+    }
 }
