@@ -1,4 +1,6 @@
 <script setup>
+import ReservedButton from "@/components/button/ReservedButton.vue";
+
 const props = defineProps({
   room:{
     type: Object,
@@ -43,6 +45,7 @@ console.log(props.room);
         <span>Стоимость за сутки:</span>
         {{ room.price }} руб.
       </p>
+      <reserved-button class="room__button"/>
     </div>
   </article>
 </template>
@@ -50,7 +53,7 @@ console.log(props.room);
 <style scoped lang="scss">
 .room{
   letter-spacing: 0.05em;
-  max-width: 960px;
+  max-width: 940px;
   @apply flex gap-16 py-10 px-12;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   img{
@@ -91,10 +94,15 @@ console.log(props.room);
   }
   &__price{
     font-size: 24px;
+    margin-bottom: 60px;
     span{
       font-weight: 600;
       color: $bright-green;
     }
+  }
+  &__button{
+    padding-inline:50% ;
+    @apply w-full;
   }
 }
 </style>
