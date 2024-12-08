@@ -35,11 +35,15 @@ Route::post('/reviews', [ReviewController::class, 'store']);
 Route::put('/reviews/{id}', [ReviewController::class, 'update']);
 Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 
-// Бронирование
+// Бронирование (для авторизованных пользователей)
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/bookings', [BookingController::class, 'index']); // Список бронирований
     Route::post('/bookings', [BookingController::class, 'store']); // Создать бронирование
     Route::delete('/bookings/{id}', [BookingController::class, 'destroy']); // Удалить бронирование
+
+    // Контакты
+    Route::post('/contacts', [ContactController::class, 'store']); // Создать сообщение
+    Route::get('/contacts', [ContactController::class, 'index']); // Просмотреть свои сообщения
 });
 
 // Обновление данных шапки (только для админов)
@@ -65,9 +69,3 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/admin/room-features/{id}', [RoomFeatureController::class, 'update']);
     Route::delete('/admin/room-features/{id}', [RoomFeatureController::class, 'destroy']);
 });
-
-// Создание сообщения (для всех пользователей)
-Route::post('/contacts', [ContactController::class, 'store']);
-
-// Просмотр всех сообщений (только для администраторов)
-Route::middleware('auth:api')->get('/admin/contacts', [ContactController::class, 'index']);
