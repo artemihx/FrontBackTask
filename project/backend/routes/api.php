@@ -1,14 +1,15 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoomController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\Admin\RoomController as AdminRoomController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoomFeatureController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ContactController;
 
 // Авторизация и регистрация
 Route::post('/register', [AuthController::class, 'register']);
@@ -34,10 +35,17 @@ Route::post('/reviews', [ReviewController::class, 'store']);
 Route::put('/reviews/{id}', [ReviewController::class, 'update']);
 Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 
-// Обновление данных шапки (только для авторизованных администраторов)
+// Бронирование
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/bookings', [BookingController::class, 'index']); // Список бронирований
+    Route::post('/bookings', [BookingController::class, 'store']); // Создать бронирование
+    Route::delete('/bookings/{id}', [BookingController::class, 'destroy']); // Удалить бронирование
+});
+
+// Обновление данных шапки (только для админов)
 Route::middleware('auth:sanctum')->put('/header', [HeaderController::class, 'update']);
 
-// Админка (только для авторизованных администраторов)
+// Админка (только для админов)
 Route::middleware('auth:api')->group(function () {
     // Админка: Пользователи
     Route::get('/admin/users', [UserController::class, 'index']);
@@ -57,3 +65,9 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/admin/room-features/{id}', [RoomFeatureController::class, 'update']);
     Route::delete('/admin/room-features/{id}', [RoomFeatureController::class, 'destroy']);
 });
+
+// Создание сообщения (для всех пользователей)
+Route::post('/contacts', [ContactController::class, 'store']);
+
+// Просмотр всех сообщений (только для администраторов)
+Route::middleware('auth:api')->get('/admin/contacts', [ContactController::class, 'index']);
