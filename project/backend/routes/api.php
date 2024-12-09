@@ -50,6 +50,9 @@ Route::middleware('auth:sanctum')->group(function () {
 // Обновление данных шапки (только для админов)
 Route::middleware('auth:sanctum')->put('/header', [HeaderController::class, 'update']);
 
+// Информация об отеле для животных
+Route::get('/contact', [ContactController::class, 'hotelInfo']);
+
 // Админка (только для админов)
 Route::middleware('auth:api')->group(function () {
     // Админка: Пользователи

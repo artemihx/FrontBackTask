@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f2abd51-224e-47f1-9bc3-66d6954468d4" name="Changes" comment="через /user">
+    <list default="true" id="4f2abd51-224e-47f1-9bc3-66d6954468d4" name="Changes" comment="номер">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/ContactController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,18 +28,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "oldber1"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;oldber1&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/artemihx/FrontBackTask.git",
-    "accountId": "68023171-9d53-4e6e-9e3f-c9385dd532d1"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/artemihx/FrontBackTask.git&quot;,
+    &quot;accountId&quot;: &quot;68023171-9d53-4e6e-9e3f-c9385dd532d1&quot;
   }
-}]]></component>
+}</component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php-8.4.1-nts-Win32-vs17-x64\php.exe" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -128,7 +129,8 @@
       <workItem from="1733646826396" duration="5206000" />
       <workItem from="1733668769202" duration="12016000" />
       <workItem from="1733722012442" duration="351000" />
-      <workItem from="1733739375983" duration="198000" />
+      <workItem from="1733739375983" duration="365000" />
+      <workItem from="1733747832186" duration="806000" />
     </task>
     <task id="LOCAL-00001" summary="через /user">
       <option name="closed" value="true" />
@@ -138,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733738794382</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="номер">
+      <option name="closed" value="true" />
+      <created>1733739616758</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733739616759</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -159,6 +169,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="мена юза" />
     <MESSAGE value="через /user" />
-    <option name="LAST_COMMIT_MESSAGE" value="через /user" />
+    <MESSAGE value="номер" />
+    <option name="LAST_COMMIT_MESSAGE" value="номер" />
   </component>
 </project>
