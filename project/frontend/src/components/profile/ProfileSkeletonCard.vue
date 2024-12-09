@@ -1,0 +1,62 @@
+<template>
+  <div class="profile container">
+    <div class="profile__avatar">
+      <div class="profile__avatar-image shimmer"></div>
+    </div>
+
+    <div class="profile__info">
+      <div class="profile__info-name shimmer"></div>
+
+      <div class="profile__info-detail shimmer"></div>
+      <div class="profile__info-detail shimmer"></div>
+      <div class="profile__info-detail shimmer"></div>
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+.profile {
+  @apply w-4/5 my-12 mx-auto justify-between p-8 flex bg-white rounded-lg shadow-lg;
+
+  &__avatar {
+    @apply flex-shrink-0;
+
+    &-image {
+      @apply w-64 h-64 rounded-full border-4 border-gray-300 shadow-md;
+    }
+  }
+
+  &__info {
+    @apply w-6/12 bg-gray-50 p-6 rounded-lg shadow-md;
+
+    &-name {
+      @apply w-2/3 h-8 mb-4 rounded;
+    }
+
+    &-detail {
+      @apply w-full h-6 mb-4 rounded;
+    }
+  }
+
+  .shimmer {
+    position: relative;
+    background: linear-gradient(
+            90deg,
+            rgb(211, 211, 211) 0%,
+            rgba(240, 240, 240, 1) 50%,
+            rgb(211, 211, 211) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite linear;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+</style>

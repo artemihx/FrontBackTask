@@ -9,7 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
     const token = ref(localStorage.getItem('token') || null);
     const router = useRouter()
     const loginError = ref(null);
-
+    const user = ref(null);
     const login = async (credentials) => {
         try {
             const response = await api.post(`login`, credentials);
@@ -32,7 +32,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const register = async (formData) => {
         try {
-            const response = await axios.post("http://localhost:8081/api/register", formData, {
+            const response = await api.post("register", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             console.log(response);
@@ -74,10 +74,35 @@ export const useAuthStore = defineStore('auth', () => {
         }
     }
 
+    const userData = async () =>{
+        try {
+            const response = await api.get('user', {
+                headers: {
+                    Authorization: `Bearer ${token.value}`
+                }
+            })
+            user.value = response.data
+            console.log(user.value)
+        }
+        catch (error) {
+            console.error('Ошибка получения данных о пользователе', error);
+        }
+    }
 
 
 
 
 
-    return { token, router, loginError, login, register, logout, isAuthenticated };
+
+    return {
+        user,
+        token,
+        router,
+        loginError,
+        isAuthenticated,
+        login,
+        register,
+        logout,
+        userData
+    };
 });

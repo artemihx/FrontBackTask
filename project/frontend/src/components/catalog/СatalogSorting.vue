@@ -10,8 +10,8 @@ const emitSort = () => {
   catalogStore.updateSortOrder(params.value.sort_order);
 };
 
-onMounted(() => {
-  catalogStore.getRooms();
+onMounted(async () => {
+  await catalogStore.getRooms();
 });
 </script>
 
