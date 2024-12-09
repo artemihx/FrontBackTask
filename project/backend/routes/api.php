@@ -26,6 +26,7 @@ Route::get('/rooms/{room}', [RoomController::class, 'show']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
+    Route::put('/user', [AuthController::class, 'updateUser']);
     Route::post('/updatePhoto', [AuthController::class, 'updateAvatar']);
 });
 
