@@ -104,7 +104,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
     const updateUser = async (updatedData) => {
         try {
-            const response = await api.post('user', updatedData, {
+            const response = await api.put('user', updatedData, {
                 headers: {
                     Authorization: `Bearer ${token.value}`,
                 },
