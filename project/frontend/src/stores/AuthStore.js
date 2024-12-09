@@ -3,7 +3,6 @@ import {computed, ref} from "vue";
 import {useRouter} from "vue-router";
 import {api} from "@/shared/index.js";
 import {toastNotification} from "@/shared/functions.js";
-import axios from "axios";
 
 export const useAuthStore = defineStore('auth', () => {
     const token = ref(localStorage.getItem('token') || null);
@@ -118,6 +117,25 @@ export const useAuthStore = defineStore('auth', () => {
         }
     };
 
+    const updatePhoto = async (photoFile) => {
+        try {
+            const formData = new FormData();
+            formData.append('photo', photoFile);
+
+            const response = await api.post('updatePhoto', formData, {
+                headers: {
+                    Authorization: `Bearer ${token.value}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+            user.value.photo = response.data.photo;
+            toastNotification('Фотография успешно обновлена', 'success');
+        } catch (error) {
+            console.error('Ошибка при обновлении фотографии', error);
+            toastNotification('Ошибка при обновлении фотографии', 'error');
+        }
+    };
+
     return {
         user,
         token,
@@ -128,6 +146,7 @@ export const useAuthStore = defineStore('auth', () => {
         register,
         logout,
         userData,
-        updateUser
+        updateUser,
+        updatePhoto,
     };
 });
