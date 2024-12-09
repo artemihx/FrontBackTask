@@ -26,6 +26,7 @@ Route::get('/rooms/{room}', [RoomController::class, 'show']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
+    Route::put('/user', [AuthController::class, 'updateUser']);
     Route::post('/updatePhoto', [AuthController::class, 'updateAvatar']);
 });
 
@@ -69,5 +70,3 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/admin/room-features/{id}', [RoomFeatureController::class, 'update']);
     Route::delete('/admin/room-features/{id}', [RoomFeatureController::class, 'destroy']);
 });
-
-Route::middleware('auth:sanctum')->put('/user/update', [AuthController::class, 'updateUser']);
