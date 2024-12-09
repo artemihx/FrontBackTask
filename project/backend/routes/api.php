@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\RoomFeatureController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
 
-// Авторизация и регистрация
+// Авторизация и регистрациq
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
