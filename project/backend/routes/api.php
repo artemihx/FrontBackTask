@@ -69,3 +69,5 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/admin/room-features/{id}', [RoomFeatureController::class, 'update']);
     Route::delete('/admin/room-features/{id}', [RoomFeatureController::class, 'destroy']);
 });
+
+Route::middleware('auth:sanctum')->put('/user/update', [AuthController::class, 'updateUser']);
