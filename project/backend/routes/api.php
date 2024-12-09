@@ -77,3 +77,5 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/admin/room-features/{id}', [RoomFeatureController::class, 'update']);
     Route::delete('/admin/room-features/{id}', [RoomFeatureController::class, 'destroy']);
 });
+
+Route::get('/filters', [RoomController::class, 'getFilters']);

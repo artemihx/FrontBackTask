@@ -47,4 +47,17 @@ class RoomController extends Controller
         $photos = $room->load(['photos']);
         return response()->json($room->photos);
     }
+    public function getFilters()
+    {
+        $minPrice = Room::min('price');
+        $maxPrice = Room::max('price');
+        $areas = Room::distinct()->pluck('area');
+        $features = Feature::distinct()->pluck('name');
+
+        return response()->json([
+            'price' => ['min' => $minPrice, 'max' => $maxPrice],
+            'areas' => $areas,
+            'features' => $features,
+        ]);
+    }
 }
