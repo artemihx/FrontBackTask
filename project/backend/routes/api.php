@@ -11,7 +11,7 @@ use App\Http\Controllers\Admin\RoomFeatureController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ContactController;
 
-// Авторизация и регистрация
+// Авторизация и регистрациq
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -21,6 +21,10 @@ Route::get('/header', [HeaderController::class, 'index']);
 // Номера
 Route::get('/rooms', [RoomController::class, 'index']);
 Route::get('/rooms/{room}', [RoomController::class, 'show']);
+
+// Маршруты для фото
+Route::get('/users/{user}/photo', [AuthController::class, 'userPhoto']);
+Route::get('/rooms/{room}/photos', [RoomController::class, 'roomPhotos']);
 
 // Авторизация для обновления данных пользователя
 Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -50,6 +54,9 @@ Route::middleware('auth:sanctum')->group(function () {
 // Обновление данных шапки (только для админов)
 Route::middleware('auth:sanctum')->put('/header', [HeaderController::class, 'update']);
 
+// Информация об отеле для животных
+Route::get('/contact', [ContactController::class, 'hotelInfo']);
+
 // Админка (только для админов)
 Route::middleware('auth:api')->group(function () {
     // Админка: Пользователи
@@ -70,3 +77,5 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/admin/room-features/{id}', [RoomFeatureController::class, 'update']);
     Route::delete('/admin/room-features/{id}', [RoomFeatureController::class, 'destroy']);
 });
+
+Route::get('/filters', [RoomController::class, 'getFilters']);
