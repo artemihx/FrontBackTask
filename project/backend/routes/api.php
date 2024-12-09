@@ -22,6 +22,10 @@ Route::get('/header', [HeaderController::class, 'index']);
 Route::get('/rooms', [RoomController::class, 'index']);
 Route::get('/rooms/{room}', [RoomController::class, 'show']);
 
+
+Route::get('/user/{user}/photo', [AuthController::class, 'userPhoto']);
+
+
 // Авторизация для обновления данных пользователя
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/logout', [AuthController::class, 'logout']);

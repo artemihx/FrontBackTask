@@ -16,7 +16,7 @@ class HotelRoomsEquipmentSeeder extends Seeder
 
         foreach ($rooms as $index => $room) {
             if ($index < 2) {
-                $room->equipment()->attach(1); // Предполагается, что ID отопления = 1
+                $room->equipment()->attach(1);
             } else {
                 $equipmentIds = $equipments->pluck('id')->take($index + 1);
                 $room->equipment()->attach($equipmentIds);

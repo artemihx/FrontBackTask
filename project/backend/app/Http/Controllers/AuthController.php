@@ -42,4 +42,10 @@ class AuthController extends Controller
         auth()->user()->tokens()->delete();
         return response()->json(['message' => 'logout'], 200);
     }
+
+    public function userPhoto(User $user)
+    {
+        $photo = Storage::disk('public')->path($user->photo);
+        return response()->file($photo);
+    }
 }

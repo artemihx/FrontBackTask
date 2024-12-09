@@ -19,10 +19,9 @@ class RegisterUserAction
         ]);
         if ($photo = $request->file('photo'))
         {
-            Storage::disk('public')->put('avatars/' . $photo->hashName(), file_get_contents($photo));
-            $photoUrl = Storage::disk('public')->url('avatars/' . $photo->hashName());
-            $photoUrl = str_replace('localhost', 'backend-proxy', $photoUrl);
-            $user->photo = $photoUrl;
+            $path = 'avatars/' . $photo->hashName();
+            Storage::disk('public')->put($path, file_get_contents($photo));
+            $user->photo = $path;
         }
         $user->save();
 
