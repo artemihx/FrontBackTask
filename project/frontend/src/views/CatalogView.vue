@@ -23,9 +23,9 @@ onMounted(async () => {
       <template v-if="catalogStore.rooms.length">
         <section class="rooms">
           <room-catalog-card
-              v-for="room in catalogStore.rooms"
-              :key="room.id"
-              :room="room"
+            v-for="room in catalogStore.rooms"
+            :key="room.id"
+            :room="room"
           />
         </section>
       </template>
@@ -33,8 +33,8 @@ onMounted(async () => {
       <template v-else>
         <section class="rooms">
           <room-catalog-skeleton
-              v-for="item in 6"
-              :key="item"
+            v-for="item in 6"
+            :key="item"
           />
         </section>
       </template>

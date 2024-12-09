@@ -17,7 +17,8 @@ onMounted(async ()=>{
 <template>
   <template v-if="user">
     <profile-card
-    :user="user"/>
+      :user="user"
+    />
   </template>
 
   <template v-else>

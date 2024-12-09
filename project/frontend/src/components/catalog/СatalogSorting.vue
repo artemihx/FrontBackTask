@@ -17,20 +17,28 @@ onMounted(async () => {
 
 <template>
   <div class="sort">
-    <label for="sortSelect" class="sort__label">
-      Сортировать по цене:
-    </label>
-    <select
+    <div class="flex flex-col">
+      <label
+        for="sortSelect"
+        class="sort__label"
+      >
+        Сортировать по цене:
+      </label>
+      <select
         id="sortSelect"
         v-model="params.sort_order"
         class="sort__select"
         @change="emitSort"
-    >
-      <option value="asc">По возрастанию</option>
-      <option value="desc">По убыванию</option>
-    </select>
+      >
+        <option value="asc">По возрастанию</option>
+        <option value="desc">По убыванию</option>
+      </select>
+    </div>
 
-    <div v-if="isLoading" class="loading-spinner">
+    <div
+      v-if="isLoading"
+      class="loading-spinner"
+    >
       <div class="spinner"></div>
       <span>Загрузка...</span>
     </div>
@@ -39,7 +47,7 @@ onMounted(async () => {
 
 <style lang="scss">
 .sort {
-  @apply flex flex-col space-y-2;
+  @apply flex space-y-2 items-center gap-4;
 
   &__label {
     @apply text-sm font-medium text-gray-700;

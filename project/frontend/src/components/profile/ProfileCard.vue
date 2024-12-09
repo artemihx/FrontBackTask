@@ -35,7 +35,6 @@ const cancelEditing = () => {
     name: props.user.name,
     phone: props.user.phone,
     email: props.user.email,
-    photo: props.user.photo,
     password: '',
     password_confirmation: '',
   };
