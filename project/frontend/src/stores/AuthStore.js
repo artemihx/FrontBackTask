@@ -50,10 +50,20 @@ export const useAuthStore = defineStore('auth', () => {
                 router.push('/');
             }, 1500);
         } catch (error) {
-            toastNotification("Ошибка при регистрации", "error");
+            if (error.response && error.response.status === 422) {
+                const errorMessage = error.response.data.message;
+                if (errorMessage.includes("The email has already been taken")) {
+                    toastNotification("Этот email уже занят", "error");
+                } else {
+                    toastNotification("Ошибка при регистрации: " + errorMessage, "error");
+                }
+            } else {
+                toastNotification("Ошибка при регистрации", "error");
+            }
             console.error('Ошибка при регистрации:', error.response?.data || error);
         }
     };
+
 
 
     const isAuthenticated = computed(() => !!token.value);
@@ -94,7 +104,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
     const updateUser = async (updatedData) => {
         try {
-            const response = await api.post('user', updatedData, {
+            const response = await api.put('user', updatedData, {
                 headers: {
                     Authorization: `Bearer ${token.value}`,
                 },
@@ -107,7 +117,6 @@ export const useAuthStore = defineStore('auth', () => {
             toastNotification('Ошибка при обновлении данных', 'error');
         }
     };
-
 
     return {
         user,

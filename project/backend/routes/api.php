@@ -30,6 +30,7 @@ Route::get('/rooms/{room}/photos', [RoomController::class, 'roomPhotos']);
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
+    Route::put('/user', [AuthController::class, 'updateUser']);
     Route::post('/updatePhoto', [AuthController::class, 'updateAvatar']);
 });
 
