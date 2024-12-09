@@ -6,99 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4f2abd51-224e-47f1-9bc3-66d6954468d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Actions/LoginUserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Actions/LoginUserAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Actions/RegisterUserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Actions/RegisterUserAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Actions/UpdateAvatarUserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Actions/UpdateAvatarUserAction.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/RoomController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/RoomFeatureController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/RoomFeatureController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/ContactController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/HeaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/HeaderController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/ReviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/ReviewController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/RoomController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Requests/LoginRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Requests/LoginRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Requests/RegisterRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Requests/RegisterRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/Booking.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/Booking.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/Contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/Header.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/Header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/HotelRoom.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/HotelRoom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/Review.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/Review.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/RoomEquipment.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/RoomEquipment.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/RoomPhoto.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/RoomPhoto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/artisan" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/artisan" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/bootstrap/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/bootstrap/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/bootstrap/cache/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/bootstrap/providers.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/bootstrap/providers.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/auth.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/cache.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/cache.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/filesystems.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/logging.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/logging.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/mail.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/queue.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/queue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/sanctum.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/sanctum.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/session.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/0001_01_01_000001_create_cache_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/0001_01_01_000001_create_cache_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/0001_01_01_000002_create_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/0001_01_01_000002_create_jobs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_11_25_151207_create_personal_access_tokens_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_11_25_151207_create_personal_access_tokens_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_11_29_115357_create_headers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_11_29_115357_create_headers_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_04_160109_create_hotel_rooms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_04_160109_create_hotel_rooms_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_04_161126_create_room_equipment_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_04_161126_create_room_equipment_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_04_161235_create_hotel_rooms_equipment_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_04_161235_create_hotel_rooms_equipment_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_07_063413_create_rooms_photos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_07_063413_create_rooms_photos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_07_141546_create_reviews_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_07_141546_create_reviews_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_08_094613_create_bookings_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_08_094613_create_bookings_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_08_140543_create_contacts_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/migrations/2024_12_08_140543_create_contacts_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/seeders/EquipmentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/seeders/EquipmentSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/seeders/HotelRoomSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/seeders/HotelRoomSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/database/seeders/HotelRoomsEquipmentSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/seeders/HotelRoomsEquipmentSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/postcss.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/postcss.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/public/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/public/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/public/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/public/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/public/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/public/robots.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/resources/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/resources/views/welcome.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/routes/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/routes/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/backend/storage/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/private/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/private/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/public/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/public/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/framework/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/framework/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/framework/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/framework/cache/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/framework/cache/data/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/framework/cache/data/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/framework/sessions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/framework/sessions/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/framework/testing/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/framework/testing/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/framework/views/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/framework/views/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/logs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/logs/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/tests/Feature/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/tests/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/tests/Unit/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/vite.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,7 +72,7 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "photo-fix",
-    "last_opened_file_path": "/home/artemih/task/FrontBackTask/project/backend",
+    "last_opened_file_path": "/home/artemih/task/FrontBackTask/project/backend/storage/app/public/rooms",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -185,11 +93,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/project/backend/storage/app/public/rooms" />
       <recent name="$PROJECT_DIR$/project/backend" />
       <recent name="C:\Users\Станислав\myProjects\frontbackweek\FrontBackTask\project\frontend\src\assets\images" />
       <recent name="C:\Users\Станислав\myProjects\frontbackweek\FrontBackTask\project\frontend\src\assets" />
       <recent name="C:\Users\Станислав\myProjects\frontbackweek\FrontBackTask\project\frontend\src\views" />
-      <recent name="C:\Users\Станислав\myProjects\frontbackweek\FrontBackTask\project\backend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Станислав\myProjects\frontbackweek\FrontBackTask" />
@@ -236,7 +144,7 @@
       <workItem from="1733646826396" duration="5206000" />
       <workItem from="1733668769202" duration="12016000" />
       <workItem from="1733722012442" duration="351000" />
-      <workItem from="1733736745039" duration="2651000" />
+      <workItem from="1733736745039" duration="2901000" />
     </task>
     <servers />
   </component>
