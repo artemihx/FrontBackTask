@@ -7,6 +7,7 @@ use App\Http\Actions\RegisterUserAction;
 use App\Http\Actions\UpdateAvatarUserAction;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
