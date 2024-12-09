@@ -9,12 +9,16 @@ export const useAuthStore = defineStore('auth', () => {
     const token = ref(localStorage.getItem('token') || null);
     const router = useRouter()
     const loginError = ref(null);
+    const user = ref(null);
 
     const login = async (credentials) => {
         try {
             const response = await api.post(`login`, credentials);
             console.log(response.data)
+
+            token.value = response.data.user_token;
             localStorage.setItem('token', token.value);
+
             loginError.value = null;
             await toastNotification("Вы авторизовались!","success")
             setTimeout(()=>{
@@ -32,7 +36,7 @@ export const useAuthStore = defineStore('auth', () => {
 
     const register = async (formData) => {
         try {
-            const response = await axios.post("http://localhost:8081/api/register", formData, {
+            const response = await api.post("register", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
             console.log(response);
@@ -74,10 +78,47 @@ export const useAuthStore = defineStore('auth', () => {
         }
     }
 
+    const userData = async () =>{
+        try {
+            const response = await api.get('user', {
+                headers: {
+                    Authorization: `Bearer ${token.value}`
+                }
+            })
+            user.value = response.data
+            console.log(user.value)
+        }
+        catch (error) {
+            console.error('Ошибка получения данных о пользователе', error);
+        }
+    }
+    const updateUser = async (updatedData) => {
+        try {
+            const response = await api.post('user', updatedData, {
+                headers: {
+                    Authorization: `Bearer ${token.value}`,
+                },
+            });
+            user.value = response.data;
+            console.log(user.value)
+            toastNotification('Данные успешно обновлены', 'success');
+        } catch (error) {
+            console.error('Ошибка при обновлении данных пользователя', error);
+            toastNotification('Ошибка при обновлении данных', 'error');
+        }
+    };
 
 
-
-
-
-    return { token, router, loginError, login, register, logout, isAuthenticated };
+    return {
+        user,
+        token,
+        router,
+        loginError,
+        isAuthenticated,
+        login,
+        register,
+        logout,
+        userData,
+        updateUser
+    };
 });

@@ -1,30 +1,39 @@
 <script setup>
-import { ref, defineEmits } from 'vue';
+import { useCatalogStore } from '@/stores/CatalogStore.js';
+import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
 
-const selectedOption = ref('asc');
-const emit = defineEmits(['sort']);
+const catalogStore = useCatalogStore();
+const { params, isLoading  } = storeToRefs(catalogStore);
 
 const emitSort = () => {
-  emit('sort', selectedOption.value);
+  catalogStore.updateSortOrder(params.value.sort_order);
 };
+
+onMounted(async () => {
+  await catalogStore.getRooms();
+});
 </script>
+
 <template>
   <div class="sort">
-    <label
-      for="sortSelect"
-      class="sort__label"
-    >
+    <label for="sortSelect" class="sort__label">
       Сортировать по цене:
     </label>
     <select
-      id="sortSelect"
-      v-model="selectedOption"
-      class="sort__select"
-      @change="emitSort"
+        id="sortSelect"
+        v-model="params.sort_order"
+        class="sort__select"
+        @change="emitSort"
     >
       <option value="asc">По возрастанию</option>
       <option value="desc">По убыванию</option>
     </select>
+
+    <div v-if="isLoading" class="loading-spinner">
+      <div class="spinner"></div>
+      <span>Загрузка...</span>
+    </div>
   </div>
 </template>
 
@@ -38,6 +47,13 @@ const emitSort = () => {
 
   &__select {
     @apply w-48 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500;
+  }
+}
+.loading-spinner {
+  @apply flex items-center space-x-2 mt-4 text-green-500;
+
+  .spinner {
+    @apply w-6 h-6 border-4 border-t-green-500 border-gray-200 rounded-full animate-spin;
   }
 }
 </style>
