@@ -56,6 +56,7 @@ class AuthController extends Controller
             'name' => 'nullable|string|max:255',
             'email' => 'nullable|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
+            'phone' => 'nullable|string|max:20',
         ]);
 
         // проверка и обновление пароля
@@ -72,6 +73,14 @@ class AuthController extends Controller
                 'error' => $e->getMessage(),
             ], 500);
         }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Данные пользователя успешно обновлены.',
+            'user' => $user,
+        ]);
+
+        $user->update($validatedData);
 
         return response()->json([
             'success' => true,
