@@ -7,6 +7,7 @@ use App\Http\Actions\RegisterUserAction;
 use App\Http\Actions\UpdateAvatarUserAction;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,11 @@ class AuthController extends Controller
         return response()->json(['message' => 'logout'], 200);
     }
 
-    // Обновление данных пользователя
+    public function userPhoto(User $user)
+    {
+        return $user->photo;
+    }
+        // Обновление данных пользователя
     public function updateUser(Request $request)
     {
         $user = $request->user(); // получение текущего авторизованного пользователя

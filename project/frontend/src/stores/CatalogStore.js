@@ -26,6 +26,7 @@ export const useCatalogStore = defineStore('catalog', () => {
         params.sort_order = order;
         getRooms();
     };
+
     return {
         getRooms,
         updateSortOrder,
