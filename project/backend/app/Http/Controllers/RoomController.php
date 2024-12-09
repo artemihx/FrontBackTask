@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\HotelRoom;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
@@ -39,5 +40,11 @@ class RoomController extends Controller
     {
         $room->load(['equipment', 'photos']);
         return new JsonResponse($room, 200);
+    }
+
+    public function roomPhotos(HotelRoom $room)
+    {
+        $photos = $room->load(['photos']);
+        return response()->json($room->photos);
     }
 }

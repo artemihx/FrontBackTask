@@ -104,23 +104,23 @@ class HotelRoomSeeder extends Seeder
         $photos = [
             [
                 'room_id' => 1,
-                'photo' => 'http://backend-proxy/storage/rooms/photo1.jpeg'
+                'photo' => 'http://localhost:8081/api/storage/rooms/photo1.jpeg'
             ],
             [
                 'room_id' => 2,
-                'photo' => 'http://backend-proxy/storage/rooms/photo2.png'
+                'photo' => 'http://localhost:8081/api/storage/rooms/photo2.png'
             ],
             [
                 'room_id' => 3,
-                'photo' => 'http://backend-proxy/storage/rooms/photo3.jpg'
+                'photo' => 'http://localhost:8081/api/storage/rooms/photo3.jpg'
             ],
             [
                 'room_id' => 4,
-                'photo' => 'http://backend-proxy/storage/rooms/photo4.jpg'
+                'photo' => 'http://localhost:8081/api/storage/rooms/photo4.jpg'
             ],
             [
                 'room_id' => 5,
-                'photo' => 'http://backend-proxy/storage/rooms/photo5.jpg'
+                'photo' => 'http://localhost:8081/api/storage/rooms/photo5.jpg'
             ],
         ];
 
