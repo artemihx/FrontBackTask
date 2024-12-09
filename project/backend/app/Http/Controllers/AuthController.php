@@ -45,7 +45,6 @@ class AuthController extends Controller
 
     public function userPhoto(User $user)
     {
-        $photo = Storage::disk('public')->path($user->photo);
-        return response()->file($photo);
+        return $user->photo;
     }
 }

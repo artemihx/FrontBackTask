@@ -6,7 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="4f2abd51-224e-47f1-9bc3-66d6954468d4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/deploy/backend-proxy/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/deploy/backend-proxy/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Actions/RegisterUserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Actions/RegisterUserAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Actions/UpdateAvatarUserAction.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Actions/UpdateAvatarUserAction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/app/Http/Controllers/RoomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/app/Http/Controllers/RoomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/database/seeders/HotelRoomSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/database/seeders/HotelRoomSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo1.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo2.png" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/project/backend/storage/app/public/rooms/photo5.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +52,8 @@
   }
 }]]></component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/project/backend/.env" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/backend/.gitignore" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Actions/RegisterUserAction.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/RoomController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Controllers/Admin/RoomFeatureController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -50,10 +64,14 @@
     <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Controllers/Controller.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Controllers/HeaderController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Controllers/ReviewController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Controllers/RoomController.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/project/backend/app/Http/Controllers/RoomController.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/backend/app/Models/HotelRoom.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/backend/config/filesystems.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/project/backend/database/migrations/2024_12_07_063413_create_rooms_photos_table.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/project/backend/database/seeders/HotelRoomSeeder.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/project/backend/routes/api.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/project/backend/storage/app/.gitignore" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/project/backend/storage/app/public/.gitignore" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/project/backend/storage/app/.gitignore" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/project/backend/storage/app/public/.gitignore" root0="SKIP_INSPECTION" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/bin/php" />
   <component name="ProjectColorInfo">{
@@ -144,7 +162,7 @@
       <workItem from="1733646826396" duration="5206000" />
       <workItem from="1733668769202" duration="12016000" />
       <workItem from="1733722012442" duration="351000" />
-      <workItem from="1733736745039" duration="2901000" />
+      <workItem from="1733736745039" duration="8587000" />
     </task>
     <servers />
   </component>

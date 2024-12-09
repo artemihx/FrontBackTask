@@ -12,7 +12,8 @@ class UpdateAvatarUserAction
     {
         $photo = $request->file('photo');
         Storage::disk('public')->put('avatars/' . $photo->hashName(), file_get_contents($photo));
-        auth()->user()->update(['photo' => 'avatars/' . $photo->hashName()]);
-        return response()->json(['avatar' => $photo->hashName()]);
+        $photoUrl = Storage::disk('public')->url('avatars/' . $photo->hashName());
+        auth()->user()->update(['photo' => $photoUrl]);
+        return response()->json(['avatar' => $photoUrl]);
     }
 }

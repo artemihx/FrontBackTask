@@ -22,9 +22,9 @@ Route::get('/header', [HeaderController::class, 'index']);
 Route::get('/rooms', [RoomController::class, 'index']);
 Route::get('/rooms/{room}', [RoomController::class, 'show']);
 
-
-Route::get('/user/{user}/photo', [AuthController::class, 'userPhoto']);
-
+// Маршруты для фото
+Route::get('/users/{user}/photo', [AuthController::class, 'userPhoto']);
+Route::get('/rooms/{room}/photos', [RoomController::class, 'roomPhotos']);
 
 // Авторизация для обновления данных пользователя
 Route::group(['middleware' => 'auth:sanctum'], function () {

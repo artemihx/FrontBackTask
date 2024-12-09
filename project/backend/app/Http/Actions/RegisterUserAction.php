@@ -21,7 +21,8 @@ class RegisterUserAction
         {
             $path = 'avatars/' . $photo->hashName();
             Storage::disk('public')->put($path, file_get_contents($photo));
-            $user->photo = $path;
+            $photoUrl = Storage::disk('public')->url($path);
+            $user->photo = $photoUrl;
         }
         $user->save();
 
