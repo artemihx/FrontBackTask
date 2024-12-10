@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\HotelRoom;
+use App\Models\RoomEquipment;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -49,15 +50,19 @@ class RoomController extends Controller
     }
     public function getFilters()
     {
-        $minPrice = Room::min('price');
-        $maxPrice = Room::max('price');
-        $areas = Room::distinct()->pluck('area');
-        $features = Feature::distinct()->pluck('name');
+        $rooms = HotelRoom::all();
 
-        return response()->json([
-            'price' => ['min' => $minPrice, 'max' => $maxPrice],
+        $minPrice = HotelRoom::min('price');
+        $maxPrice = HotelRoom::max('price');
+        $areas = $rooms->unique('area')->pluck('area');
+        $equipments = RoomEquipment::all();
+
+        $filters = [
+            'min_price' => $minPrice,
+            'max_price' => $maxPrice,
             'areas' => $areas,
-            'features' => $features,
-        ]);
+            'equipments' => $equipments,
+        ];
+        return new JsonResponse($filters, 200);
     }
 }
