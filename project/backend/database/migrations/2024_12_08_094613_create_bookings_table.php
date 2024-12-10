@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Связь с таблицей пользователей
-            $table->foreignId('room_id')->constrained('hotel_rooms')->onDelete('cascade'); // Исправляем на hotel_rooms
-            $table->date('start_date'); // Дата начала бронирования
-            $table->date('end_date');   // Дата окончания бронирования
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('room_id')->constrained('hotel_rooms')->onDelete('cascade');
+            $table->string('pet_name');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
 

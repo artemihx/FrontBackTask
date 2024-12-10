@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\HotelRoom;
 use App\Models\Room;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Nette\Utils\JsonException;
 
 class BookingController extends Controller
 {
@@ -20,12 +23,14 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'room_id' => 'required|exists:rooms,id',
+            'user_id' => 'required',
+            'pet_name' => 'required',
+            'room_id' => 'required',
             'start_date' => 'required|date|after_or_equal:today',
-            'end_date' => 'required|date|after:start_date',
+            'end_date' => 'required|date|after_or_equal:start_date',
         ]);
 
-        $room = Room::find($request->room_id);
+        $room = HotelRoom::find($request->room_id);
 
         // Проверяем, свободен ли номер в указанные даты
         $overlappingBookings = Booking::where('room_id', $room->id)
@@ -45,6 +50,7 @@ class BookingController extends Controller
         $booking = Booking::create([
             'user_id' => Auth::id(),
             'room_id' => $request->room_id,
+            'pet_name' => $request->pet_name,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
         ]);
@@ -53,16 +59,13 @@ class BookingController extends Controller
     }
 
     // Удалить бронирование
-    public function destroy($id)
+    public function destroy(Booking $booking)
     {
-        $booking = Booking::where('id', $id)->where('user_id', Auth::id())->first();
-
-        if (!$booking) {
-            return response()->json(['message' => 'Бронирование не найдено.'], 404);
+        if($booking->user_id == auth()->id()) {
+            $booking->delete();
+            return response()->json(['message' => 'Бронирование успешно удалено.']);
         }
 
-        $booking->delete();
-
-        return response()->json(['message' => 'Бронирование успешно удалено.']);
+        throw new HttpResponseException(response()->json(['message' => 'Нет доступа'], 403));
     }
 }
