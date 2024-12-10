@@ -9,17 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-        public function up()
+    public function up(): void
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('pets', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('room_id')->constrained('hotel_rooms')->onDelete('cascade');
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->foreignId('booking_id')->constrained('bookings')->onDelete('cascade');
+            $table->string('name');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('pets');
     }
 };

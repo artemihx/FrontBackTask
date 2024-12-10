@@ -23,6 +23,11 @@ class Booking extends Model
 
     public function room()
     {
-        return $this->belongsTo(Room::class);
+        return $this->belongsTo(HotelRoom::class);
+    }
+
+    public function pets()
+    {
+        return $this->hasMany(Pet::class);
     }
 }

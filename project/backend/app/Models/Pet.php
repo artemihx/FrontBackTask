@@ -5,13 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Pet extends Model
 {
     use HasFactory;
 
+    protected $table = 'pets';
+
     protected $fillable = [
+        'booking_id',
         'name',
-        'email',
-        'message',
     ];
+
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
 }

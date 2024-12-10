@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\HotelRoom;
+use App\Models\Pet;
 use App\Models\Room;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Nette\Utils\JsonException;
 
 class BookingController extends Controller
 {
     // Получить список всех бронирований для текущего пользователя
     public function index()
     {
-        $bookings = Booking::where('user_id', Auth::id())->with('room')->get();
+        $bookings = Booking::where('user_id', Auth::id())->with('room', 'pets')->get();
         return response()->json($bookings);
     }
 
@@ -20,12 +24,14 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'room_id' => 'required|exists:rooms,id',
+            'user_id' => 'required',
+            'pet_name' => 'required|array|min:1|max:4',
+            'room_id' => 'required',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date',
         ]);
 
-        $room = Room::find($request->room_id);
+        $room = HotelRoom::find($request->room_id);
 
         // Проверяем, свободен ли номер в указанные даты
         $overlappingBookings = Booking::where('room_id', $room->id)
@@ -49,20 +55,24 @@ class BookingController extends Controller
             'end_date' => $request->end_date,
         ]);
 
+        foreach ($request->pet_name as $petName) {
+            Pet::create([
+                'booking_id' => $booking->id,
+                'name' => $petName,
+            ]);
+        }
+
         return response()->json(['message' => 'Бронирование успешно создано!', 'booking' => $booking], 201);
     }
 
     // Удалить бронирование
-    public function destroy($id)
+    public function destroy(Booking $booking)
     {
-        $booking = Booking::where('id', $id)->where('user_id', Auth::id())->first();
-
-        if (!$booking) {
-            return response()->json(['message' => 'Бронирование не найдено.'], 404);
+        if($booking->user_id == auth()->id()) {
+            $booking->delete();
+            return response()->json(['message' => 'Бронирование успешно удалено.']);
         }
 
-        $booking->delete();
-
-        return response()->json(['message' => 'Бронирование успешно удалено.']);
+        throw new HttpResponseException(response()->json(['message' => 'Нет доступа'], 403));
     }
 }

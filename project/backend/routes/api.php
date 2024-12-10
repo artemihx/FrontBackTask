@@ -44,7 +44,7 @@ Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/bookings', [BookingController::class, 'index']); // Список бронирований
     Route::post('/bookings', [BookingController::class, 'store']); // Создать бронирование
-    Route::delete('/bookings/{id}', [BookingController::class, 'destroy']); // Удалить бронирование
+    Route::delete('/bookings/{booking}', [BookingController::class, 'destroy']); // Удалить бронирование
 
     // Контакты
     Route::post('/contacts', [ContactController::class, 'store']); // Создать сообщение
@@ -53,9 +53,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 // Обновление данных шапки (только для админов)
 Route::middleware('auth:sanctum')->put('/header', [HeaderController::class, 'update']);
-
-// Информация об отеле для животных
-Route::get('/contact', [ContactController::class, 'hotelInfo']);
 
 // Админка (только для админов)
 Route::middleware('auth:api')->group(function () {

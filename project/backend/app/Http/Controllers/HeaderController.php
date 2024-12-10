@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Header;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 
 class HeaderController extends Controller
 {
-    /**
-     * Возвращение данные шапки.
-     */
     public function index(): JsonResponse
     {
         $header = Header::first();
@@ -19,20 +17,21 @@ class HeaderController extends Controller
             return response()->json(['error' => 'Header not found'], 404);
         }
 
-        return response()->json([
-            'city' => $header->city,
-            'slogan' => $header->slogan,
-        ]);
+        return response()->json($header);
     }
 
-    /**
-     * Обновление данных шапки (админ).
-     */
     public function update(Request $request): JsonResponse
     {
         $validated = $request->validate([
-            'city' => 'required|string|max:255',
-            'slogan' => 'required|string|max:255',
+            'city' => 'string',
+            'slogan' => 'string',
+            'adress' => 'string',
+            'phone' => 'string',
+            'email' => 'string',
+            'worktime' => 'string',
+            'vk' => 'string',
+            'tg' => 'string',
+            'whatsapp' => 'string'
         ]);
 
         $header = Header::first();
@@ -44,11 +43,7 @@ class HeaderController extends Controller
         $header->update($validated);
 
         return response()->json([
-            'message' => 'Header updated successfully',
-            'header' => [
-                'city' => $header->city,
-                'slogan' => $header->slogan,
-            ],
+            'message' => 'Header updated successfully', $header
         ]);
     }
 }

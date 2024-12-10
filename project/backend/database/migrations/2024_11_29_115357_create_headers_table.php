@@ -12,6 +12,13 @@ class CreateHeadersTable extends Migration
             $table->id();
             $table->string('city');
             $table->string('slogan');
+            $table->string('adress');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('worktime');
+            $table->string('vk');
+            $table->string('tg');
+            $table->string('whatsapp');
             $table->timestamps();
         });
     }
