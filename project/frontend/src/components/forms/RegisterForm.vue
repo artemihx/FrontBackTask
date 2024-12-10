@@ -23,20 +23,6 @@ const handlePhotoUpload = (e) => {
   photo.value = e.target.files[0];
 };
 
-const validatePhoto = (file) => {
-  if (!file) return true; // Фото необязательно
-  if (file.size > 2097152) {
-    errors.photo = "Файл не должен превышать 2MB";
-    return false;
-  }
-  if (!["image/jpeg", "image/png"].includes(file.type)) {
-    errors.photo = "Файл должен быть формата jpeg или png";
-    return false;
-  }
-  errors.photo = null;
-  return true;
-};
-
 const submit = handleSubmit((values) => {
   const formData = new FormData();
   formData.append("name", values.name);

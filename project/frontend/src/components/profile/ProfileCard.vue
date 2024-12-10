@@ -1,9 +1,10 @@
 <script setup>
 import { ref } from 'vue';
 import { useAuthStore } from '@/stores/AuthStore';
-import ProfileForm from '@/components/profile/ProfileForm.vue';
-import ProfileAvatar from '@/components/profile/ProfileAvatar.vue'
-import ProfileInfo from '@/components/profile/ProfileInfo.vue'
+
+import ProfileCardForm from "@/components/profile/ProfileCardForm.vue";
+import ProfileCardInfo from "@/components/profile/ProfileCardInfo.vue";
+import ProfileCardAvatar from "@/components/profile/ProfileCardAvatar.vue";
 
 const props = defineProps({
   user: {
@@ -76,17 +77,17 @@ const saveChanges = async () => {
 
 <template>
   <div class="profile container">
-    <profile-avatar
-      :user="user"
+    <profile-card-avatar
+      :photo="user.photo"
     />
 
-    <profile-info
+    <profile-card-info
       v-if="!editing"
       :user="user"
       @start="startEditing"
     />
 
-    <profile-form
+    <profile-card-form
       v-else
       :errors="errors"
       :form-data="formData"

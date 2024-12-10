@@ -1,14 +1,26 @@
 <script setup>
+import { CatalogBookingModal, CatalogFilters, CatalogSorting } from '@/components/catalog/index.js'
+
 import RoomCatalogCard from "@/components/room/RoomCatalogCard.vue";
-import CatalogFilters from "@/components/catalog/CatalogFilters.vue";
-import CatalogSorting from "@/components/catalog/СatalogSorting.vue";
-import { onMounted, ref, computed } from "vue";
-import { useCatalogStore } from "@/stores/CatalogStore.js";
 import RoomCatalogSkeleton from "@/components/room/RoomCatalogSkeleton.vue";
+import { onMounted, ref } from "vue";
+import { useCatalogStore } from "@/stores/CatalogStore.js";
 
 const catalogStore = useCatalogStore();
 const { getRooms } = catalogStore;
 
+const book = ref(false);
+const selectedRoomId = ref(null);
+
+const startBook = (roomId) => {
+  selectedRoomId.value = roomId;
+  book.value = true;
+};
+
+const cancelBook = () => {
+  book.value = false;
+  selectedRoomId.value = null;
+};
 
 onMounted(async () => {
   await getRooms();
@@ -16,9 +28,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between position-relative">
     <div class="flex flex-col">
-      <catalog-sorting/>
+      <catalog-sorting />
 
       <template v-if="catalogStore.rooms.length">
         <section class="rooms">
@@ -26,6 +38,8 @@ onMounted(async () => {
             v-for="room in catalogStore.rooms"
             :key="room.id"
             :room="room"
+            :book="book"
+            @start="startBook(room.id)"
           />
         </section>
       </template>
@@ -39,7 +53,15 @@ onMounted(async () => {
         </section>
       </template>
     </div>
-    <catalog-filters/>
+
+    <catalog-filters />
+
+    <catalog-booking-modal
+      v-if="book"
+      :room-id="selectedRoomId"
+      @cancel="cancelBook"
+      @success="cancelBook"
+    />
   </div>
 </template>
 
