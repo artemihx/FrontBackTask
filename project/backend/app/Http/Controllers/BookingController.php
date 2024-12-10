@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use App\Models\HotelRoom;
+use App\Models\Pet;
 use App\Models\Room;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class BookingController extends Controller
     // Получить список всех бронирований для текущего пользователя
     public function index()
     {
-        $bookings = Booking::where('user_id', Auth::id())->with('room')->get();
+        $bookings = Booking::where('user_id', Auth::id())->with('room', 'pets')->get();
         return response()->json($bookings);
     }
 
@@ -24,10 +25,10 @@ class BookingController extends Controller
     {
         $request->validate([
             'user_id' => 'required',
-            'pet_name' => 'required',
+            'pet_name' => 'required|array|min:1|max:4',
             'room_id' => 'required',
             'start_date' => 'required|date|after_or_equal:today',
-            'end_date' => 'required|date|after_or_equal:start_date',
+            'end_date' => 'required|date|after:start_date',
         ]);
 
         $room = HotelRoom::find($request->room_id);
@@ -50,10 +51,16 @@ class BookingController extends Controller
         $booking = Booking::create([
             'user_id' => Auth::id(),
             'room_id' => $request->room_id,
-            'pet_name' => $request->pet_name,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
         ]);
+
+        foreach ($request->pet_name as $petName) {
+            Pet::create([
+                'booking_id' => $booking->id,
+                'name' => $petName,
+            ]);
+        }
 
         return response()->json(['message' => 'Бронирование успешно создано!', 'booking' => $booking], 201);
     }
