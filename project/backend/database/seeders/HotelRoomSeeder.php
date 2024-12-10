@@ -107,6 +107,10 @@ class HotelRoomSeeder extends Seeder
                 'photo' => 'http://localhost:8081/api/storage/rooms/photo1.jpeg'
             ],
             [
+                'room_id' => 1,
+                'photo' => 'http://localhost:8081/api/storage/rooms/photo1-1.jpg'
+            ],
+            [
                 'room_id' => 2,
                 'photo' => 'http://localhost:8081/api/storage/rooms/photo2.png'
             ],
