@@ -9,14 +9,20 @@ export const useCatalogStore = defineStore('catalog', () => {
         sort_order: 'asc'
     })
 
-    const getRooms = async () => {
-        isLoading.value = true; // Начало загрузки
+    const getRooms = async (id = null) => {
+        isLoading.value = true;
         try {
-            const response = (await api.get('rooms', { params })).data;
-            rooms.value = response;
-            console.log(response)
+            const endpoint = id ? `rooms/${id}` : 'rooms';
+            const response = (await api.get(endpoint, { params })).data;
+
+            if (id) {
+                return response; // Возвращаем данные конкретной комнаты
+            } else {
+                rooms.value = response;
+            }
         } catch (error) {
             console.error('Ошибка загрузки комнат:', error);
+            throw error; // Пробрасываем ошибку для обработки
         } finally {
             isLoading.value = false;
         }

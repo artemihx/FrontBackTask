@@ -136,6 +136,21 @@ export const useAuthStore = defineStore('auth', () => {
         }
     };
 
+    const bookingRoom = async (updatedData) => {
+        try {
+            const response = await api.post('bookings', updatedData, {
+                headers: {
+                    Authorization: `Bearer ${token.value}`,
+                },
+            });
+            console.log(response.data)
+            toastNotification('Заявка успешно отправлена!', 'success');
+        } catch (error) {
+            toastNotification('Ошибка бронирования', 'error');
+            console.error('Ошибка бронирования:', error);
+        }
+    };
+
     return {
         user,
         token,
@@ -148,5 +163,6 @@ export const useAuthStore = defineStore('auth', () => {
         userData,
         updateUser,
         updatePhoto,
+        bookingRoom
     };
 });

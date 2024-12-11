@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
-  user:{
-    type:Object,
-    required:true
+  photo:{
+    type:String,
+    required: true
   }
 })
 </script>
@@ -10,14 +10,14 @@ defineProps({
 <template>
   <div class="profile__avatar">
     <img
-      v-if="user.photo === null"
+      v-if="photo === null"
       src="@/assets/images/no-avatar.jpg"
       alt="User Avatar"
       class="profile__avatar-image"
     />
     <img
       v-else
-      :src="user.photo"
+      :src="photo"
       alt="User Avatar"
       class="profile__avatar-image"
     />
