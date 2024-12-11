@@ -1,11 +1,23 @@
 # FrontBackTask
 
-перед началом запустить docker desktop,
-в папке backend создать файл .env на основе .env.example
-сайт находится на localhost:8081
-1. cd deploy
-2. docker compose up -d --build
-3. docker compose exec backend composer install
-4. docker compose exec backend php artisan migrate:fresh --seed
-5. docker compose exec backend  chown -R www-data:www-data .
-6. docker compose exec backend php artisan storage:link
+## 1. Склонировать проект
+
+## 2. Создать .env в backend на основе .env.example
+
+## 3. Перейти в папку deploy
+```
+cd deploy
+```
+## 4. Выполнить команды
+```
+docker compose up -d --build
+docker compose exec backend composer install
+docker compose exec backend php artisan migrate:fresh --seed
+docker compose exec backend  chown -R www-data:www-data .
+docker compose exec backend php artisan storage:link
+```
+### Данные для авторизации админа
+admin@admin.com
+superadmin
+
+мяу
