@@ -15,7 +15,7 @@ class UpdateHeaderAction
             return response()->json(['error' => 'Header not found'], 404);
         }
 
-        $header->update($request);
+        $header->update($request->validated());
 
         return response()->json([
             'message' => 'Header updated successfully', $header

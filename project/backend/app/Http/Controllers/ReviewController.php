@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReviewRequest;
 use App\Models\Review;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
 class ReviewController extends Controller
@@ -22,27 +21,38 @@ class ReviewController extends Controller
      */
     public function store(ReviewRequest $request)
     {
-        $review = Review::create($request);
+        $review = Review::create(
+            [
+                'user_id' => auth()->user()->id,
+                'content' => $request->content,
+                'rating' => $request->rating
+            ]);
         return response()->json($review, 201);
     }
 
     /**
      * Обновить существующий отзыв.
      */
-    public function update(ReviewRequest $request, $review)
+    public function update(ReviewRequest $request, Review $review)
     {
         Gate::authorize('update', $review);
-        $review->update($request);
+        $review->update($request->validated());
         return response()->json($review);
     }
 
     /**
      * Удалить отзыв.
      */
-    public function delete($review)
+    public function delete(Review $review)
     {
         Gate::authorize('delete', $review);
         $review->delete();
         return response()->json(['message' => 'Review deleted successfully']);
+    }
+
+    public function getRandomReviews()
+    {
+        $reviews = Review::inRandomOrder()->take(5)->get();
+        return response()->json($reviews);
     }
 }

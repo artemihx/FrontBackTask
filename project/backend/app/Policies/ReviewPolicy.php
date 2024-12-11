@@ -9,7 +9,6 @@ use Illuminate\Auth\Access\Response;
 class ReviewPolicy
 {
 
-
     /**
      * Determine whether the user can update the model.
      */

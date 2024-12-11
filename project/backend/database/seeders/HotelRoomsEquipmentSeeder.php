@@ -22,11 +22,5 @@ class HotelRoomsEquipmentSeeder extends Seeder
                 $room->equipment()->attach($equipmentIds);
             }
         }
-
-        $premiumRooms = $rooms->whereIn('name', ['Премиум', 'Люкс', 'Дворец']);
-        $allEquipmentIds = $equipments->pluck('id');
-        foreach ($premiumRooms as $room) {
-            $room->equipment()->attach($allEquipmentIds);
-        }
     }
 }

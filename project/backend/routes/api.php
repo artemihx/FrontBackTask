@@ -6,8 +6,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\HeaderController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\Admin\RoomController as AdminRoomController;
-use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoomFeatureController;
 use App\Http\Controllers\BookingController;
 
@@ -31,6 +29,9 @@ Route::get('/reviews', [ReviewController::class, 'index']);
 
 Route::get('/filters', [RoomController::class, 'getFilters']);
 
+Route::get('/randReviews', [ReviewController::class, 'getRandomReviews']);
+Route::get('/randRooms', [RoomController::class, 'getRandomRooms']);
+
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
@@ -47,15 +48,24 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::group(['middleware' => 'role:admin'], function ()
     {
-        Route::get('/admin/rooms', [AdminRoomController::class, 'index']);
-        Route::post('/admin/rooms', [AdminRoomController::class, 'store']);
-        Route::put('/admin/rooms/{id}', [AdminRoomController::class, 'update']);
-        Route::delete('/admin/rooms/{id}', [AdminRoomController::class, 'destroy']);
+        Route::post('/admin/rooms', [App\Http\Controllers\Admin\RoomController::class, 'store']);
+        Route::put('/admin/rooms/{room}', [App\Http\Controllers\Admin\RoomController::class, 'update']);
+        Route::delete('/admin/rooms/{room}', [App\Http\Controllers\Admin\RoomController::class, 'delete']);
+        Route::post('/admin/rooms/{room}/photos', [App\Http\Controllers\Admin\RoomController::class, 'addPhoto']);
+        Route::delete('/admin/rooms/photos/{photo}', [App\Http\Controllers\Admin\RoomController::class, 'deletePhoto']);
+        Route::post('/admin/rooms/{room}/equipments/{equipment}', [App\Http\Controllers\Admin\RoomController::class, 'addEquipments']);
+        Route::delete('/admin/rooms/{room}/equipments/{equipment}', [App\Http\Controllers\Admin\RoomController::class, 'deleteEquipment']);
 
-        Route::get('/admin/room-features', [RoomFeatureController::class, 'index']);
-        Route::post('/admin/room-features', [RoomFeatureController::class, 'store']);
-        Route::put('/admin/room-features/{id}', [RoomFeatureController::class, 'update']);
-        Route::delete('/admin/room-features/{id}', [RoomFeatureController::class, 'destroy']);
+        Route::get('/admin/equipments', [RoomFeatureController::class, 'index']);
+        Route::post('/admin/equipments', [RoomFeatureController::class, 'store']);
+        Route::put('/admin/equipments/{equipment}', [RoomFeatureController::class, 'update']);
+        Route::delete('/admin/equipments/{equipment}', [RoomFeatureController::class, 'delete']);
+
+        Route::get('/admin/bookings', [App\Http\Controllers\Admin\BookingsController::class, 'index']);
+        Route::delete('/admin/bookings/{booking}', [App\Http\Controllers\Admin\BookingsController::class, 'delete']);
+        Route::put('/admin/bookings/{booking}', [App\Http\Controllers\Admin\BookingsController::class, 'accept']);
+
+        Route::put('/admin/header', [HeaderController::class, 'update']);
     });
 });
 

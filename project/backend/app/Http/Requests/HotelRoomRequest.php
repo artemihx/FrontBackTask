@@ -19,7 +19,7 @@ class HotelRoomRequest extends FormRequest
             'height' => 'required|numeric',
             'length' => 'required|numeric',
             'price' => 'required|numeric',
-            'on_main' =>'required|boolean',
+            'on_main' =>'nullable|boolean',
         ];
     }
 }

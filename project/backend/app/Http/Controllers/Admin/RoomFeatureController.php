@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RoomEquipmentRequest;
+use App\Models\RoomEquipment;
 use App\Models\RoomFeature;
 use Illuminate\Http\Request;
 
@@ -10,46 +12,27 @@ class RoomFeatureController extends Controller
 {
     public function index()
     {
-        return response()->json(RoomFeature::all());
+        return response()->json(RoomEquipment::all());
     }
 
-    public function store(Request $request)
+    public function store(RoomEquipmentRequest $request)
     {
-        $validated = $request->validate([
-            'room_id' => 'required|exists:rooms,id',
-            'feature_name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-        ]);
 
-        $roomFeature = RoomFeature::create([
-            'room_id' => $validated['room_id'],
-            'feature_name' => $validated['feature_name'],
-            'description' => $validated['description'] ?? null,
-        ]);
-
+        $roomFeature = RoomEquipment::create($request->validated());
         return response()->json($roomFeature, 201);
     }
 
-    public function update(Request $request, $id)
+    public function update(RoomEquipmentRequest $request, RoomEquipment $equipment)
     {
-        $roomFeature = RoomFeature::findOrFail($id);
 
-        $validated = $request->validate([
-            'room_id' => 'nullable|exists:rooms,id',
-            'feature_name' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
-        ]);
+        $equipment->update($request->validated());
 
-        $roomFeature->update($validated);
-
-        return response()->json($roomFeature);
+        return response()->json($equipment, 201);
     }
 
-    public function destroy($id)
+    public function delete(RoomEquipment $equipment)
     {
-        $roomFeature = RoomFeature::findOrFail($id);
-        $roomFeature->delete();
-
-        return response()->json(['message' => 'Room feature deleted successfully']);
+        $equipment->delete();
+        return response()->json(['message' => 'Room equipment deleted successfully']);
     }
 }

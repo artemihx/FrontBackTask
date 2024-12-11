@@ -46,4 +46,10 @@ class RoomController extends Controller
         ];
         return new JsonResponse($filters, 200);
     }
+
+    public function getRandomRooms()
+    {
+        $rooms = HotelRoom::inRandomOrder()->take(3)->get();
+        return response()->json($rooms, 200);
+    }
 }

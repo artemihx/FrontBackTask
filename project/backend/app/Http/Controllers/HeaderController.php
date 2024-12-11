@@ -14,11 +14,9 @@ class HeaderController extends Controller
     public function index(): JsonResponse
     {
         $header = Header::first();
-
         if (!$header) {
             return response()->json(['error' => 'Header not found'], 404);
         }
-
         return response()->json($header);
     }
 
