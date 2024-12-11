@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('room_id')->constrained('hotel_rooms')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
 

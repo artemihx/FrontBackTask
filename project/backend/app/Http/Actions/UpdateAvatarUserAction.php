@@ -2,7 +2,6 @@
 
 namespace App\Http\Actions;
 
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
