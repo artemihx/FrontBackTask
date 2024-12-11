@@ -1,9 +1,8 @@
-import FilterPriceInput from "@/components/catalog/FilterPriceInput.vue";
-import FilterArea from "@/components/catalog/FilterArea.vue";
-import FilterEquipment from "@/components/catalog/FilterEquipment.vue";
-import FilterButtons from "@/components/catalog/FilterButtons.vue";
+import FilterPriceInput from "@/components/catalog/filters/FilterPriceInput.vue";
+import FilterArea from "@/components/catalog/filters/FilterArea.vue";
+import FilterEquipment from "@/components/catalog/filters/FilterEquipment.vue";
+import FilterButtons from "@/components/catalog/filters/FilterButtons.vue";
 
-import CatalogBookingModal from "@/components/catalog/CatalogBookingModal.vue";
 import CatalogFilters from "@/components/catalog/CatalogFilters.vue";
 import CatalogSorting from "@/components/catalog/СatalogSorting.vue";
 
@@ -12,7 +11,6 @@ export {
     FilterArea,
     FilterEquipment,
     FilterButtons,
-    CatalogBookingModal,
     CatalogFilters,
     CatalogSorting
 }

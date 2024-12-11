@@ -1,6 +1,8 @@
 <script setup>
-import {onMounted, onUnmounted, ref} from "vue";
-import { useAuthStore } from "@/stores/AuthStore.js";
+import { onMounted, onUnmounted, ref, watch } from "vue";
+import { useRoomsStore } from "@/stores/RoomsStore.js";
+import {storeToRefs} from "pinia";
+import {useAuthStore} from "@/stores/AuthStore.js";
 
 const props = defineProps({
   roomId: {
@@ -9,12 +11,14 @@ const props = defineProps({
   },
 });
 
-const authStore = useAuthStore();
+const { user } = storeToRefs(useAuthStore())
+const roomsStore = useRoomsStore();
+const authStore = useAuthStore()
 
-const petName = ref("");
+const numberOfPets = ref(1);
+const petNames = ref([""]);
 const checkIn = ref("");
 const checkOut = ref("");
-const numberOfPets = ref(1);
 const errors = ref({});
 
 const emit = defineEmits(["success", "cancel"]);
@@ -22,11 +26,14 @@ const emit = defineEmits(["success", "cancel"]);
 const validate = () => {
   errors.value = {};
 
-  if (!/^[A-Za-zА-Яа-яёЁ\s\-]+$/.test(petName.value)) {
-    errors.value.petName = "Имя питомца может содержать только буквы, пробелы и тире.";
-  }
+  // Проверка всех имен питомцев
+  petNames.value.forEach((name, index) => {
+    if (!/^[A-Za-zА-Яа-яёЁ\s\-]+$/.test(name)) {
+      errors.value[`petName${index}`] = "Имя питомца может содержать только буквы, пробелы и тире.";
+    }
+  });
 
-  if (!checkIn.value || new Date(checkIn.value) < new Date()) {
+  if (!checkIn.value || new Date(checkIn.value - 1) < new Date()) {
     errors.value.checkIn = "Дата заезда не может быть раньше сегодняшнего дня.";
   }
 
@@ -45,29 +52,45 @@ const submitBooking = async () => {
   if (!validate()) return;
 
   const formData = {
-    pet_name: petName.value,
+    room_id: props.roomId,
+    user_id: user.id,
+    pet_name: petNames.value,
     start_date: checkIn.value,
     end_date: checkOut.value,
-    number_pets: numberOfPets.value,
-    room_id: props.roomId,
+
   };
 
-  await authStore.bookingRoom(formData);
+  await roomsStore.bookingRoom(formData);
   emit("success");
 };
+
 const handleEscape = (event) => {
-  if (event.key === 'Escape') {
-    emit('cancel');
+  if (event.key === "Escape") {
+    emit("cancel");
   }
 };
-onMounted(() => {
-  window.addEventListener('keydown', handleEscape);
+
+onMounted(async () => {
+  window.addEventListener("keydown", handleEscape);
+  await authStore.userData();
+
 });
+
 onUnmounted(() => {
-  window.removeEventListener('keydown', handleEscape);
+  window.removeEventListener("keydown", handleEscape);
+});
+
+// Обновление количества полей для ввода имен питомцев
+watch(numberOfPets, (newCount) => {
+  if (newCount > petNames.value.length && newCount < 5) {
+    while (petNames.value.length < newCount) {
+      petNames.value.push("");
+    }
+  } else {
+    petNames.value = petNames.value.slice(0, newCount);
+  }
 });
 </script>
-
 
 <template>
   <div class="booking-modal__overlay">
@@ -78,25 +101,47 @@ onUnmounted(() => {
         @submit.prevent="submitBooking"
       >
         <div class="booking-modal__field">
+          <label class="booking-modal__label">Количество питомцев (макс. 4)</label>
+          <input
+            v-model.number="numberOfPets"
+            type="number"
+            class="booking-modal__input"
+            min="1"
+            max="4"
+            required
+          />
+          <span
+            v-if="errors.numberOfPets"
+            class="booking-modal__error"
+          >
+            {{ errors.numberOfPets }}
+          </span>
+        </div>
+
+        <div
+          v-for="(name, index) in petNames"
+          :key="index"
+          class="booking-modal__field"
+        >
           <label
-            for="petName"
+            :for="`petName${index}`"
             class="booking-modal__label"
           >
-            Имя питомца
+            Имя питомца {{ index + 1 }}
           </label>
           <input
-            id="petName"
-            v-model="petName"
+            :id="`petName${index}`"
+            v-model="petNames[index]"
             type="text"
             class="booking-modal__input"
             placeholder="Имя питомца"
             required
           />
           <span
-            v-if="errors.petName"
+            v-if="errors[`petName${index}`]"
             class="booking-modal__error"
           >
-            {{ errors.petName }}
+            {{ errors[`petName${index}`] }}
           </span>
         </div>
 
@@ -141,24 +186,6 @@ onUnmounted(() => {
             class="booking-modal__error"
           >
             {{ errors.checkOut }}
-          </span>
-        </div>
-
-        <div class="booking-modal__field">
-          <label class="booking-modal__label">Количество питомцев (макс. 4)</label>
-          <input
-            v-model.number="numberOfPets"
-            type="number"
-            class="booking-modal__input"
-            min="1"
-            max="4"
-            required
-          />
-          <span
-            v-if="errors.numberOfPets"
-            class="booking-modal__error"
-          >
-            {{ errors.numberOfPets }}
           </span>
         </div>
 

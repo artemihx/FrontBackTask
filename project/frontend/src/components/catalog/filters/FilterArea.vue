@@ -1,6 +1,6 @@
 <script setup>
 
-import FilterAreaItem from "@/components/catalog/FilterAreaItem.vue";
+import FilterAreaItem from "@/components/catalog/filters/FilterAreaItem.vue";
 </script>
 
 <template>

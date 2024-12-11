@@ -6,22 +6,24 @@ import { onMounted } from 'vue';
 import { useAuthStore } from "@/stores/AuthStore.js";
 import {storeToRefs} from "pinia";
 
-const { user } = storeToRefs(useAuthStore())
+const { user, isLoading } = storeToRefs(useAuthStore())
 const { userData } = useAuthStore();
-
 
 onMounted(async ()=>{
   await userData();
 })
 </script>
 <template>
-  <template v-if="user">
-    <profile-card
-      :user="user"
-    />
-  </template>
+  <div>
+    <template v-if="user">
+      <profile-card
+        :user="user"
+        :is-loading="isLoading"
+      />
+    </template>
 
-  <template v-else>
-    <profile-skeleton-card/>
-  </template>
+    <template v-if="isLoading">
+      <profile-skeleton-card/>
+    </template>
+  </div>
 </template>

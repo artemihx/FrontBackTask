@@ -1,17 +1,20 @@
 <script setup>
 import { useCatalogStore } from '@/stores/CatalogStore.js';
+import { useRoomsStore } from '@/stores/RoomsStore.js';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
 
 const catalogStore = useCatalogStore();
-const { params, isLoading  } = storeToRefs(catalogStore);
+const roomsStore = useRoomsStore();
+const { params } = storeToRefs(catalogStore);
+const { isLoading } = storeToRefs(roomsStore);
 
-const emitSort = () => {
-  catalogStore.updateSortOrder(params.value.sort_order);
+const emitSort = async () => {
+  await catalogStore.updateSortOrder(params.value.sort_order);
 };
 
 onMounted(async () => {
-  await catalogStore.getRooms();
+  await roomsStore.getRooms();
 });
 </script>
 
@@ -57,6 +60,7 @@ onMounted(async () => {
     @apply w-48 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500;
   }
 }
+
 .loading-spinner {
   @apply flex items-center space-x-2 mt-4 text-green-500;
 

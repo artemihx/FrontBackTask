@@ -2,15 +2,15 @@
 import TheHeaderLogo from '@/components/header/TheHeaderLogo.vue'
 import TheHeaderNav from '@/components/header/TheHeaderNav.vue'
 
-import { useHeaderStore } from "@/stores/HeaderStore.js";
 import {onMounted} from "vue";
 import {storeToRefs} from "pinia";
+import {useMainStore} from "@/stores/MainStore.js";
 
-const { getHeader } = useHeaderStore();
-const { city, slogan } = storeToRefs(useHeaderStore())
+const { getMainInfo } = useMainStore();
+const { city, slogan } = storeToRefs(useMainStore())
 
 onMounted(async () => {
-  await getHeader();
+  await getMainInfo();
 })
 
 </script>

@@ -1,13 +1,18 @@
 <script setup>
-import { CatalogBookingModal, CatalogFilters, CatalogSorting } from '@/components/catalog/index.js'
+import { CatalogFilters, CatalogSorting } from '@/components/catalog/index.js'
 
 import RoomCatalogCard from "@/components/room/RoomCatalogCard.vue";
 import RoomCatalogSkeleton from "@/components/room/RoomCatalogSkeleton.vue";
 import { onMounted, ref } from "vue";
-import { useCatalogStore } from "@/stores/CatalogStore.js";
+import BookingModal from "@/components/BookingModal.vue";
+import {useRoomsStore} from "@/stores/RoomsStore.js";
+import {storeToRefs} from "pinia";
+import {useAuthStore} from "@/stores/AuthStore.js";
 
-const catalogStore = useCatalogStore();
-const { getRooms } = catalogStore;
+const roomsStore = useRoomsStore();
+const { getRooms } = roomsStore;
+
+const { user } = storeToRefs(useAuthStore())
 
 const book = ref(false);
 const selectedRoomId = ref(null);
@@ -32,10 +37,10 @@ onMounted(async () => {
     <div class="flex flex-col">
       <catalog-sorting />
 
-      <template v-if="catalogStore.rooms.length">
+      <template v-if="roomsStore.rooms.length">
         <section class="rooms">
           <room-catalog-card
-            v-for="room in catalogStore.rooms"
+            v-for="room in roomsStore.rooms"
             :key="room.id"
             :room="room"
             :book="book"
@@ -56,7 +61,7 @@ onMounted(async () => {
 
     <catalog-filters />
 
-    <catalog-booking-modal
+    <booking-modal
       v-if="book"
       :room-id="selectedRoomId"
       @cancel="cancelBook"
