@@ -48,11 +48,6 @@ class AuthController extends Controller
         auth()->user()->tokens()->delete();
         return response()->json(['message' => 'logout'], 200);
     }
-
-    public function userPhoto(User $user)
-    {
-        return $user->photo;
-    }
         // Обновление данных пользователя
     public function updateUser(UserRequest $request)
     {

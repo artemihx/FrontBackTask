@@ -22,7 +22,7 @@ class BookingsController extends Controller
 
     public function accept(Booking $booking)
     {
-        $booking->update(['status' => 1]);
+        $booking->update(['status' => true]);
         return response()->json(['message' => 'Booking has been accepted']);
     }
 }

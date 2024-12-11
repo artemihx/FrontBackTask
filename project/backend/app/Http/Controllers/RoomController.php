@@ -24,11 +24,6 @@ class RoomController extends Controller
         return new JsonResponse($room, 200);
     }
 
-    public function roomPhotos(HotelRoom $room)
-    {
-        $photos = $room->load(['photos']);
-        return response()->json($room->photos);
-    }
     public function getFilters()
     {
         $rooms = HotelRoom::all();

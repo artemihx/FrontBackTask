@@ -20,10 +20,6 @@ Route::get('/header', [HeaderController::class, 'index']);
 Route::get('/rooms', [RoomController::class, 'index']);
 Route::get('/rooms/{room}', [RoomController::class, 'show']);
 
-// Маршруты для фото
-Route::get('/users/{user}/photo', [AuthController::class, 'userPhoto']);
-Route::get('/rooms/{room}/photos', [RoomController::class, 'roomPhotos']);
-
 // Отзывы
 Route::get('/reviews', [ReviewController::class, 'index']);
 
