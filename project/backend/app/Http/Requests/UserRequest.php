@@ -16,7 +16,7 @@ class UserRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string|max:255',
-            'email' => 'nullable|email|unique:users,email,' . auth()->id,
+            'email' => 'nullable|email|unique:users,email,' . auth()->user()->id,
             'password' => 'nullable|string|min:8|confirmed',
             'phone' => 'nullable|string|max:20',
         ];

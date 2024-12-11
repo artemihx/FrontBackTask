@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Actions\LoginUserAction;
 use App\Http\Actions\RegisterUserAction;
 use App\Http\Actions\UpdateAvatarUserAction;
+use App\Http\Actions\UpdateUserAction;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use UpdateUserAction;
 
 class AuthController extends Controller
 {

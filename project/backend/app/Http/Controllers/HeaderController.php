@@ -7,6 +7,7 @@ use App\Models\Contact;
 use App\Models\Header;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use App\Http\Actions\UpdateHeaderAction;
 
 class HeaderController extends Controller
 {
@@ -23,7 +24,7 @@ class HeaderController extends Controller
 
     public function update(HeaderRequest $request): JsonResponse
     {
-        $response = \UpdateHeaderAction::execute($request);
+        $response = UpdateHeaderAction::execute($request);
         return response()->json($response);
     }
 }

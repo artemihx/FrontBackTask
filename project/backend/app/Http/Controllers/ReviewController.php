@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReviewRequest;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class ReviewController extends Controller
 {
@@ -30,6 +31,7 @@ class ReviewController extends Controller
      */
     public function update(ReviewRequest $request, $review)
     {
+        Gate::authorize('update', $review);
         $review->update($request);
         return response()->json($review);
     }
@@ -37,8 +39,9 @@ class ReviewController extends Controller
     /**
      * Удалить отзыв.
      */
-    public function destroy($review)
+    public function delete($review)
     {
+        Gate::authorize('delete', $review);
         $review->delete();
         return response()->json(['message' => 'Review deleted successfully']);
     }

@@ -3,12 +3,14 @@
 namespace App\Http\Actions;
 
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class UpdateUserAction
 {
-    public static function execute(UserRequest $request): string
+    public static function execute(UserRequest $request): User
     {
         $user = auth()->user(); // получение текущего авторизованного пользователя
 
@@ -17,20 +19,8 @@ class UpdateUserAction
             $request['password'] = Hash::make($request['password']);
         }
 
-        try {
-            $user->update($request); // обновление пользователя
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Ошибка при обновлении данных пользователя.',
-                'error' => $e->getMessage(),
-            ], 500);
-        }
+        $user->update($request->validated());
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Данные пользователя успешно обновлены.',
-            'user' => $user,
-        ]);
+        return $user;
     }
 }

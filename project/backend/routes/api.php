@@ -39,11 +39,11 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 
     Route::post('/reviews', [ReviewController::class, 'store']);
     Route::put('/reviews/{review}', [ReviewController::class, 'update']);
-    Route::delete('/reviews/{review}', [ReviewController::class, 'destroy']);
+    Route::delete('/reviews/{review}', [ReviewController::class, 'delete']);
 
     Route::get('/bookings', [BookingController::class, 'index']); // Список бронирований
     Route::post('/bookings', [BookingController::class, 'store']); // Создать бронирование
-    Route::delete('/bookings/{booking}', [BookingController::class, 'destroy']); // Удалить бронирование
+    Route::delete('/bookings/{booking}', [BookingController::class, 'delete']); // Удалить бронирование
 
     Route::group(['middleware' => 'role:admin'], function ()
     {

@@ -11,6 +11,7 @@ use App\Models\Room;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Nette\Utils\JsonException;
 
 class BookingController extends Controller
@@ -29,8 +30,12 @@ class BookingController extends Controller
         return response()->json($response, 201);
     }
 
-    // Удалить бронирование
-    public function destroy(Booking $booking)
+    /**
+     * Update the given blog post.
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function delete(Booking $booking)
     {
         Gate::authorize('delete', $booking);
         if(!$booking->status)
