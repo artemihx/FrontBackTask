@@ -15,7 +15,6 @@ class BookingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id' => 'required',
             'pet_name' => 'required|array|min:1|max:4',
             'room_id' => 'required',
             'start_date' => 'required|date|after_or_equal:today',

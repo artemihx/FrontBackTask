@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Actions\AddBookingAction;
 use App\Http\Requests\BookingRequest;
 use App\Models\Booking;
 use App\Models\HotelRoom;
@@ -24,18 +25,19 @@ class BookingController extends Controller
     // Создать новое бронирование
     public function store(BookingRequest $request)
     {
-        $response = \AddBookingAction::execute($request);
+        $response = AddBookingAction::execute($request);
         return response()->json($response, 201);
     }
 
     // Удалить бронирование
     public function destroy(Booking $booking)
     {
-        if($booking->user_id == auth()->id()) {
+        Gate::authorize('delete', $booking);
+        if(!$booking->status)
+        {
             $booking->delete();
             return response()->json(['message' => 'Бронирование успешно удалено.']);
         }
-
-        throw new HttpResponseException(response()->json(['message' => 'Нет доступа'], 403));
+        return response()->json(['message' => 'Бронивароние уже одобрено!']);
     }
 }

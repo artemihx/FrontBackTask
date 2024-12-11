@@ -30,7 +30,7 @@ class AddBookingAction
         }
 
         $booking = Booking::create([
-            'user_id' => Auth::id(),
+            'user_id' => auth()->user(),
             'room_id' => $request->room_id,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
