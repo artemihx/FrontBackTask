@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             HotelRoomSeeder::class,
             EquipmentSeeder::class,
             HotelRoomsEquipmentSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

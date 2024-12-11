@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoomController;
@@ -28,6 +29,12 @@ Route::get('/rooms/{room}/photos', [RoomController::class, 'roomPhotos']);
 
 // Авторизация для обновления данных пользователя
 Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/role', function (){
+       $user = User::find(1);
+       $user->addRole('user');
+       return $user->getRoleNames();
+    });
+
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [AuthController::class, 'user']);
     Route::put('/user', [AuthController::class, 'updateUser']);
@@ -37,8 +44,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 // Отзывы
 Route::get('/reviews', [ReviewController::class, 'index']);
 Route::post('/reviews', [ReviewController::class, 'store']);
-Route::put('/reviews/{id}', [ReviewController::class, 'update']);
-Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
+Route::put('/reviews/{review}', [ReviewController::class, 'update']);
+Route::delete('/reviews/{review}', [ReviewController::class, 'destroy']);
 
 // Бронирование (для авторизованных пользователей)
 Route::middleware('auth:sanctum')->group(function () {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HeaderRequest;
 use App\Models\Contact;
 use App\Models\Header;
 use Illuminate\Http\Request;
@@ -20,30 +21,9 @@ class HeaderController extends Controller
         return response()->json($header);
     }
 
-    public function update(Request $request): JsonResponse
+    public function update(HeaderRequest $request): JsonResponse
     {
-        $validated = $request->validate([
-            'city' => 'string',
-            'slogan' => 'string',
-            'adress' => 'string',
-            'phone' => 'string',
-            'email' => 'string',
-            'worktime' => 'string',
-            'vk' => 'string',
-            'tg' => 'string',
-            'whatsapp' => 'string'
-        ]);
-
-        $header = Header::first();
-
-        if (!$header) {
-            return response()->json(['error' => 'Header not found'], 404);
-        }
-
-        $header->update($validated);
-
-        return response()->json([
-            'message' => 'Header updated successfully', $header
-        ]);
+        $response = \UpdateHeaderAction::execute($request);
+        return response()->json($response);
     }
 }
