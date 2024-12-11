@@ -1,5 +1,5 @@
 <script setup>
-import FilterEquipmentItem from "@/components/catalog/FilterEquipmentItem.vue";
+import FilterEquipmentItem from "@/components/catalog/filters/FilterEquipmentItem.vue";
 </script>
 
 <template>

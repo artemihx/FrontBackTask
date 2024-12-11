@@ -24,7 +24,7 @@
     @apply flex-shrink-0;
 
     &-image {
-      @apply w-64 h-64 rounded-full border-4 border-gray-300 shadow-md;
+      @apply w-80 h-80 rounded-full border-4 border-gray-300 shadow-md;
     }
   }
 

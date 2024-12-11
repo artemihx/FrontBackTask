@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from "vue";
-import RoomViewCardGallery from "@/components/room/RoomViewCardGallery.vue";
-import RoomViewCardInfo from "@/components/room/RoomViewCardInfo.vue";
-import RoomViewCardLightbox from "@/components/room/RoomViewCardLightbox.vue";
+
+import RoomCardInfo from "@/components/room/room-card/RoomCardInfo.vue";
+import RoomCardGallery from "@/components/room/room-card/RoomCardGallery.vue";
+import RoomCardLightbox from "@/components/room/room-card/RoomCardLightbox.vue";
 
 const props = defineProps({
   room: {
@@ -40,19 +41,18 @@ const nextImage = () => {
 
 <template>
   <div class="room__container">
-    <room-view-card-gallery
+    <room-card-gallery
       :room="props.room"
-      @open="openLightbox(0)"
+      @open="openLightbox"
     />
 
-    <room-view-card-info
+    <room-card-info
       :room="room"
       @start="emit('start-book', room.id)"
     />
 
-    <room-view-card-lightbox
+    <room-card-lightbox
       v-if="showLightbox"
-      class="room__lightbox"
       :room="room"
       :current-image-index="currentImageIndex"
       @click.self="closeLightbox"
@@ -66,29 +66,5 @@ const nextImage = () => {
 <style scoped lang="scss">
 .room__container {
   @apply flex gap-5 m-5;
-}
-
-.room__lightbox {
-  @apply fixed top-0 left-0 w-full h-full bg-black bg-opacity-90 flex justify-center items-center z-50;
-
-  &-close {
-    @apply absolute top-5 right-7 text-white text-4xl cursor-pointer;
-  }
-
-  &-nav {
-    @apply absolute top-1/2 text-white text-4xl bg-black bg-opacity-50 px-4 py-2 rounded-full disabled:opacity-50 disabled:cursor-not-allowed;
-
-    &--prev {
-      @apply left-5;
-    }
-
-    &--next {
-      @apply right-5;
-    }
-  }
-
-  &-image {
-    @apply max-w-[90%] max-h-[80%] rounded-lg shadow-lg;
-  }
 }
 </style>

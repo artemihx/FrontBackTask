@@ -1,16 +1,15 @@
 <script setup>
 import { ref, onMounted } from 'vue';
-import { useCatalogStore } from '@/stores/CatalogStore.js';
 import { useRoute } from 'vue-router';
-import RoomViewSkeleton from "@/components/room/RoomViewSkeleton.vue";
-import RoomViewCard from "@/components/room/RoomViewCard.vue";
-import RoomBookingModal from "@/components/room/RoomBookingModal.vue";
+import BookingModal from "@/components/BookingModal.vue";
+import RoomCard from "@/components/room/room-card/RoomCard.vue";
+import RoomCardSkeleton from "@/components/room/room-card/RoomCardSkeleton.vue";
+import {useRoomsStore} from "@/stores/RoomsStore.js";
 
-const { getRooms } = useCatalogStore();
+const { getRooms } = useRoomsStore();
 const room = ref(null);
 const route = useRoute();
 
-// Состояния для управления модальным окном
 const book = ref(false);
 const selectedRoomId = ref(null);
 
@@ -34,14 +33,14 @@ const cancelBook = () => {
 
 <template>
   <div>
-    <room-view-card
+    <room-card
       v-if="room"
       :room="room"
       @start-book="startBook(room.id)"
     />
-    <room-view-skeleton v-else />
+    <room-card-skeleton v-else />
 
-    <room-booking-modal
+    <booking-modal
       v-if="book"
       :room-id="selectedRoomId"
       @cancel="cancelBook"
@@ -50,5 +49,3 @@ const cancelBook = () => {
   </div>
 </template>
 
-<style scoped lang="scss">
-</style>

@@ -9,6 +9,7 @@ export const useAuthStore = defineStore('auth', () => {
     const router = useRouter()
     const loginError = ref(null);
     const user = ref(null);
+    const isLoading = ref(false);
 
     const login = async (credentials) => {
         try {
@@ -88,6 +89,7 @@ export const useAuthStore = defineStore('auth', () => {
     }
 
     const userData = async () =>{
+        isLoading.value = true;
         try {
             const response = await api.get('user', {
                 headers: {
@@ -99,6 +101,9 @@ export const useAuthStore = defineStore('auth', () => {
         }
         catch (error) {
             console.error('Ошибка получения данных о пользователе', error);
+        }
+        finally {
+            isLoading.value = false;
         }
     }
     const updateUser = async (updatedData) => {
@@ -136,20 +141,7 @@ export const useAuthStore = defineStore('auth', () => {
         }
     };
 
-    const bookingRoom = async (updatedData) => {
-        try {
-            const response = await api.post('bookings', updatedData, {
-                headers: {
-                    Authorization: `Bearer ${token.value}`,
-                },
-            });
-            console.log(response.data)
-            toastNotification('Заявка успешно отправлена!', 'success');
-        } catch (error) {
-            toastNotification('Ошибка бронирования', 'error');
-            console.error('Ошибка бронирования:', error);
-        }
-    };
+
 
     return {
         user,
@@ -157,12 +149,12 @@ export const useAuthStore = defineStore('auth', () => {
         router,
         loginError,
         isAuthenticated,
+        isLoading,
         login,
         register,
         logout,
         userData,
         updateUser,
         updatePhoto,
-        bookingRoom
     };
 });

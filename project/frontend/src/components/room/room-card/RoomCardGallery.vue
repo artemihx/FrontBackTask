@@ -1,11 +1,12 @@
 <script setup>
 defineProps({
-  room:{
-    type:Object,
-    required:true
+  room: {
+    type: Object,
+    required: true
   }
-})
-const emit = defineEmits(['open'])
+});
+
+const emit = defineEmits(['open']);
 </script>
 
 <template>
@@ -39,7 +40,7 @@ const emit = defineEmits(['open'])
         :key="index"
         :src="photo.photo"
         alt="Thumbnail"
-        @click="openLightbox(index + 1)"
+        @click="emit('open', index + 1)"
       />
     </div>
   </div>
@@ -57,7 +58,7 @@ const emit = defineEmits(['open'])
     @apply flex gap-2 mt-2;
 
     img {
-      @apply w-16 h-16 object-cover cursor-pointer border-2 border-transparent hover:border-blue-500 rounded-lg;
+      @apply w-1/3 h-32 object-cover cursor-pointer border-2 border-transparent hover:border-green-500 rounded-lg;
     }
   }
 }

@@ -6,13 +6,12 @@ const { isAuthenticated } = storeToRefs(useAuthStore());
 </script>
 
 <template>
-  <router-link
+  <button
     v-if="isAuthenticated"
-    to="/catalog"
     class="link"
   >
     Забронировать
-  </router-link>
+  </button>
   <router-link
     v-else
     to="/register"

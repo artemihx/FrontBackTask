@@ -11,6 +11,10 @@ const props = defineProps({
     type: Object,
     required: true,
   },
+  isLoading:{
+    type: Boolean,
+    required: true
+  }
 });
 
 const authStore = useAuthStore();
@@ -76,7 +80,10 @@ const saveChanges = async () => {
 </script>
 
 <template>
-  <div class="profile container">
+  <div
+    v-if="!isLoading"
+    class="profile container"
+  >
     <profile-card-avatar
       :photo="user.photo"
     />
