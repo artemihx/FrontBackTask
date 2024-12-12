@@ -2,7 +2,7 @@
 
 ## 1. Склонировать проект
 
-## 2. Создать .env в backend на основе .env.example
+## 2. Создать .env в backend и frontentd на основе .env.example
 
 ## 3. Перейти в папку deploy
 ```
