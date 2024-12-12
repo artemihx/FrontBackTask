@@ -7,6 +7,8 @@ import { useAuthStore } from '@/stores/AuthStore.js';
 
 export const useRoomsStore = defineStore('roomsStore', () => {
     const rooms = ref([]);
+    const randomRooms = ref([])
+
     const isLoading = ref(false);
     const { params } = storeToRefs(useCatalogStore());
     const { token } = storeToRefs(useAuthStore());
@@ -14,14 +16,16 @@ export const useRoomsStore = defineStore('roomsStore', () => {
     const getRooms = async (id = null) => {
         isLoading.value = true;
         try {
-            const endpoint = id ? `rooms/${id}` : 'rooms';
-            const response = (await api.get(endpoint, { params: params.value })).data;
-
+            // Если передан `id`, запрашиваем конкретную комнату
             if (id) {
+                const response = (await api.get(`rooms/${id}`)).data;
                 return response;
-            } else {
-                rooms.value = response;
             }
+
+            // Если `id` не передан, запрашиваем все комнаты с фильтрами
+            const response = (await api.get('rooms', { params: params.value })).data;
+            rooms.value = response;
+            console.log(rooms.value);
         } catch (error) {
             console.error('Ошибка загрузки комнат:', error);
             throw error;
@@ -29,6 +33,7 @@ export const useRoomsStore = defineStore('roomsStore', () => {
             isLoading.value = false;
         }
     };
+
 
     const bookingRoom = async (updatedData) => {
         try {
@@ -44,11 +49,17 @@ export const useRoomsStore = defineStore('roomsStore', () => {
             console.error('Ошибка бронирования:', error);
         }
     };
-
+    const getRandomRooms = async () => {
+        const response = (await api.get(`randRooms`)).data
+        randomRooms.value = response;
+        console.log(response)
+    };
     return {
         rooms,
+        randomRooms,
         isLoading,
         getRooms,
         bookingRoom,
+        getRandomRooms,
     };
 });

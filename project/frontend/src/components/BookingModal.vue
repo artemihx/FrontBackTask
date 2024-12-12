@@ -1,8 +1,6 @@
 <script setup>
 import { onMounted, onUnmounted, ref, watch } from "vue";
 import { useRoomsStore } from "@/stores/RoomsStore.js";
-import {storeToRefs} from "pinia";
-import {useAuthStore} from "@/stores/AuthStore.js";
 
 const props = defineProps({
   roomId: {
@@ -11,9 +9,7 @@ const props = defineProps({
   },
 });
 
-const { user } = storeToRefs(useAuthStore())
 const roomsStore = useRoomsStore();
-const authStore = useAuthStore()
 
 const numberOfPets = ref(1);
 const petNames = ref([""]);
@@ -53,7 +49,6 @@ const submitBooking = async () => {
 
   const formData = {
     room_id: props.roomId,
-    user_id: user.id,
     pet_name: petNames.value,
     start_date: checkIn.value,
     end_date: checkOut.value,
@@ -70,17 +65,8 @@ const handleEscape = (event) => {
   }
 };
 
-onMounted(async () => {
-  window.addEventListener("keydown", handleEscape);
-  await authStore.userData();
-
-});
-
-onUnmounted(() => {
-  window.removeEventListener("keydown", handleEscape);
-});
-
 // Обновление количества полей для ввода имен питомцев
+
 watch(numberOfPets, (newCount) => {
   if (newCount > petNames.value.length && newCount < 5) {
     while (petNames.value.length < newCount) {
@@ -89,6 +75,15 @@ watch(numberOfPets, (newCount) => {
   } else {
     petNames.value = petNames.value.slice(0, newCount);
   }
+});
+
+onMounted(async () => {
+  window.addEventListener("keydown", handleEscape);
+
+});
+
+onUnmounted(() => {
+  window.removeEventListener("keydown", handleEscape);
 });
 </script>
 

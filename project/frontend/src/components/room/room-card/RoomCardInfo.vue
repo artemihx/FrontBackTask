@@ -24,7 +24,7 @@ const emit = defineEmits(['start'])
         Высота: <span>{{ room.height }} м</span>
       </p>
       <p class="room__details-text">
-        Площадь: <span>{{ room.area }} м²</span>
+        Площадь: <span>{{ room.area }} м&sup2;</span>
       </p>
       <p class="room__details-text bg-white p-1.5 rounded mt-10">
         Цена: <span>{{ room.price }} руб.</span>

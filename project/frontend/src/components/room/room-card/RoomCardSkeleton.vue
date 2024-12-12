@@ -1,42 +1,45 @@
 <template>
-  <div
-    class="room__container"
-  >
-    <div class="room__gallery">
-      <div class="room__gallery-main shimmer"></div>
-      <div class="room__gallery-thumbnails">
-        <div
-          v-for="index in 3"
-          :key="index"
-          class="shimmer thumbnail-shimmer"
-        ></div>
-      </div>
-    </div>
-
-    <div class="room__details">
-      <div class="room__details-title shimmer"></div>
-
-      <div class="room__details-info">
-        <div class="room__details-text shimmer"></div>
-        <div class="room__details-text shimmer"></div>
-        <div class="room__details-text shimmer"></div>
-        <div class="room__details-text shimmer"></div>
-        <div class="room__details-text shimmer price-shimmer"></div>
-      </div>
-
-      <div class="room__equipment">
-        <div class="room__equipment-title shimmer"></div>
-        <div class="flex flex-wrap gap-2">
+  <div>
+    <div
+      class="room__container"
+    >
+      <div class="room__gallery">
+        <div class="room__gallery-main shimmer"></div>
+        <div class="room__gallery-thumbnails">
           <div
             v-for="index in 3"
             :key="index"
-            class="room__equipment-item shimmer"
+            class="shimmer thumbnail-shimmer"
           ></div>
         </div>
       </div>
 
-      <div class="room__button shimmer"></div>
+      <div class="room__details">
+        <div class="room__details-title shimmer"></div>
+
+        <div class="room__details-info">
+          <div class="room__details-text shimmer"></div>
+          <div class="room__details-text shimmer"></div>
+          <div class="room__details-text shimmer"></div>
+          <div class="room__details-text shimmer"></div>
+          <div class="room__details-text shimmer price-shimmer"></div>
+        </div>
+
+        <div class="room__equipment">
+          <div class="room__equipment-title shimmer"></div>
+          <div class="flex flex-wrap gap-2">
+            <div
+              v-for="index in 3"
+              :key="index"
+              class="room__equipment-item shimmer"
+            ></div>
+          </div>
+        </div>
+
+        <div class="room__button shimmer"></div>
+      </div>
     </div>
+    <random-room-skeleton/>
   </div>
 </template>
 
@@ -119,3 +122,6 @@
   }
 }
 </style>
+<script setup lang="ts">
+import RandomRoomSkeleton from "@/components/room/RandomRoomSkeleton.vue";
+</script>

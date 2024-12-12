@@ -5,20 +5,16 @@ import BookingModal from "@/components/BookingModal.vue";
 import RoomCard from "@/components/room/room-card/RoomCard.vue";
 import RoomCardSkeleton from "@/components/room/room-card/RoomCardSkeleton.vue";
 import {useRoomsStore} from "@/stores/RoomsStore.js";
+import {storeToRefs} from "pinia";
 
-const { getRooms } = useRoomsStore();
+const { getRooms, getRandomRooms } = useRoomsStore();
+const { randomRooms } = storeToRefs(useRoomsStore())
+
 const room = ref(null);
 const route = useRoute();
 
 const book = ref(false);
 const selectedRoomId = ref(null);
-
-onMounted(async () => {
-  room.value = await getRooms(route.params.id).catch((error) => {
-    console.log('Ошибка загрузки комнаты:', error);
-  });
-  console.log('Комната:', room.value);
-});
 
 const startBook = (roomId) => {
   selectedRoomId.value = roomId;
@@ -29,6 +25,16 @@ const cancelBook = () => {
   book.value = false;
   selectedRoomId.value = null;
 };
+
+
+onMounted(async () => {
+  await getRandomRooms();
+
+  room.value = await getRooms(route.params.id).catch((error) => {
+    console.log('Ошибка загрузки комнаты:', error);
+  });
+  console.log('Комната:', room.value);
+});
 </script>
 
 <template>
@@ -36,6 +42,7 @@ const cancelBook = () => {
     <room-card
       v-if="room"
       :room="room"
+      :random-rooms="randomRooms"
       @start-book="startBook(room.id)"
     />
     <room-card-skeleton v-else />
