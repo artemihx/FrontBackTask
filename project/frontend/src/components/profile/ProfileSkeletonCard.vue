@@ -18,7 +18,8 @@
 
 <style scoped lang="scss">
 .profile {
-  @apply w-4/5 my-12 mx-auto justify-between p-8 flex bg-white rounded-lg shadow-lg;
+  @apply my-12 mx-auto justify-between p-8 flex bg-white rounded-lg shadow-lg;
+  width: 80% !important;
 
   &__avatar {
     @apply flex-shrink-0;

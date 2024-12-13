@@ -1,6 +1,17 @@
 <script setup>
-
 import RoomHomeCard from "@/components/room/RoomHomeCard.vue";
+import RoomHomeSkeleton from "@/components/room/RoomHomeSkeleton.vue";
+
+import {storeToRefs} from "pinia";
+import {useRoomsStore} from "@/stores/RoomsStore.js";
+import {onMounted} from "vue";
+const { mainRooms } = storeToRefs(useRoomsStore())
+const { getMainRooms } = useRoomsStore()
+
+onMounted(async ()=>{
+  mainRooms.value = null
+  await getMainRooms()
+})
 </script>
 
 <template>
@@ -9,11 +20,23 @@ import RoomHomeCard from "@/components/room/RoomHomeCard.vue";
     class="rooms"
   >
     <h2 class="rooms__title">Номера и цены</h2>
-    <div class="rooms__block">
+    <div
+      v-if="mainRooms"
+      class="rooms__block"
+    >
       <room-home-card
-        v-for="room in 4"
+        v-for="room in mainRooms"
         :key="room"
         :room="room"
+      />
+    </div>
+    <div
+      v-else
+      class="rooms__block"
+    >
+      <room-home-skeleton
+        v-for="room in [1,2,3,4]"
+        :key="room"
       />
     </div>
   </section>

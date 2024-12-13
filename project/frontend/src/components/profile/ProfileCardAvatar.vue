@@ -1,7 +1,7 @@
 <script setup>
 defineProps({
   photo:{
-    type:String,
+    type:[String,null],
     required: true
   }
 })

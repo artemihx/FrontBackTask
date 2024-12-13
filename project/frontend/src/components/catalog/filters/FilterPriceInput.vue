@@ -3,16 +3,16 @@ import { ref, watch } from 'vue';
 
 const props = defineProps({
   modelValue: {
-    type: Number,
+    type: [Number, String],
     default: null,
   },
   min: {
-    type: Number,
-    default: 500,
+    type: String,
+    default: '500',
   },
   max: {
-    type: Number,
-    default: 10000,
+    type: String,
+    default: '10000',
   },
 });
 
