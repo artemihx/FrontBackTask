@@ -106,6 +106,7 @@ const saveChanges = async () => {
 
 <style scoped lang="scss">
 .profile {
-  @apply w-4/5 my-12 items-center mx-auto justify-between p-8 flex bg-white rounded-lg shadow-lg;
+  @apply my-12 items-center mx-auto justify-between p-8 flex bg-white rounded-lg shadow-lg;
+  width: 80% !important;
 }
 </style>

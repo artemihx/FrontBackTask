@@ -8,13 +8,17 @@ defineProps({
 </script>
 
 <template>
-  <div class="room">
-    <!--    <img-->
-    <!--      v-if="randomRoom?.photos.length > 0"-->
-    <!--      :src="randomRoom?.photos[0]"-->
-    <!--      alt="image-room"-->
-    <!--    >-->
+  <div
+    v-if="randomRoom"
+    class="room"
+  >
     <img
+      v-if="randomRoom.photos && randomRoom.photos.length > 0"
+      :src="randomRoom.photos[0].photo"
+      alt="image-room"
+    >
+    <img
+      v-else
       class="room__img"
       src="@/assets/images/no-image.png"
       alt="no-image"
