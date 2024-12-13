@@ -45,6 +45,6 @@ class RoomController extends Controller
     public function getRandomRooms()
     {
         $rooms = HotelRoom::inRandomOrder()->take(3)->get();
-        return response()->json($rooms, 200);
+        return response()->json($rooms->load(['equipment', 'photos']), 200);
     }
 }

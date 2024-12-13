@@ -6,6 +6,7 @@ use App\Http\Requests\BookingRequest;
 use App\Models\Booking;
 use App\Models\HotelRoom;
 use App\Models\Pet;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 
 class AddBookingAction
@@ -26,7 +27,7 @@ class AddBookingAction
             })->exists();
 
         if ($overlappingBookings) {
-            return response()->json(['message' => 'Номер уже забронирован на указанные даты.'], 422);
+            throw new HttpResponseException(response()->json(['message' => 'Номер уже забронирован на указанные даты.'], 422));
         }
 
         $booking = Booking::create([
