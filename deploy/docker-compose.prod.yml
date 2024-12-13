@@ -26,12 +26,12 @@ services:
       build:
         context: ../
         dockerfile: ./deploy/php/Dockerfile
-      volumes:
-        - ../project/backend:/var/www/public
       command: >
         sh -c "chown -R www-data:www-data /var/www/public &&
                chmod -R 755 /var/www/public &&
                php-fpm"
+      volumes:
+        - ../project/backend/storage/app/public/:/var/www/public/storage/app/public
       networks:
         - network
       depends_on:
@@ -43,8 +43,6 @@ services:
         dockerfile: ./deploy/frontend/Dockerfile
       container_name: frontend
       hostname: frontend
-      volumes:
-        - ../project/frontend:/app
       networks:
         - network
 
