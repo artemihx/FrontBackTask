@@ -1,36 +1,36 @@
 <script setup>
-import FilterEquipmentItem from "@/components/catalog/filters/FilterEquipmentItem.vue";
+defineProps({
+  equipment: {
+    type: Object,
+    required: true,
+  },
+  selected: {
+    type: Boolean,
+    default: false,
+  },
+});
+
+const emit = defineEmits(['change']);
 </script>
 
 <template>
-  <div class="filter__group">
-    <h3 class="filter__subtitle">Оснащение</h3>
-    <div class="filter__checkbox-group">
-      <filter-equipment-item
-        v-for="item in 4"
-        :key="item"
-        :item="item"
-        class="filter__checkbox-label"
-      />
-    </div>
-  </div>
+  <label class="filter__checkbox-label">
+    <input
+      type="checkbox"
+      class="filter__checkbox"
+      :checked="selected"
+      @change="emit('change')"
+    />
+    <span>{{ equipment.name }}</span>
+  </label>
 </template>
 
+
 <style scoped lang="scss">
-.filter {
-  &__group {
-    @apply mb-4;
-  }
 
-  &__subtitle {
-    @apply text-sm font-medium mb-2;
-  }
-
-  &__checkbox-group {
-    @apply space-y-2;
-  }
-
-  &__checkbox-label {
+.filter__checkbox {
+  @apply h-4 w-4 rounded border-gray-300;
+  &-label {
     @apply flex items-center space-x-2;
   }
 }

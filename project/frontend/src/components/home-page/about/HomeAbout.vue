@@ -1,6 +1,6 @@
 <script setup>
 
-import HomeAboutItem from "@/components/home-page/HomeAboutItem.vue";
+import HomeAboutItems from "@/components/home-page/about/HomeAboutItems.vue";
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import HomeAboutItem from "@/components/home-page/HomeAboutItem.vue";
         alt="kuksik"
       >
       <div class="about__info">
-        <home-about-item/>
+        <home-about-items/>
       </div>
     </div>
     <iframe

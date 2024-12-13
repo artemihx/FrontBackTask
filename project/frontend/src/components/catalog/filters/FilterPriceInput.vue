@@ -1,22 +1,28 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
-  price: {
+  modelValue: {
     type: Number,
-    required: true,
+    default: null,
   },
   min: {
     type: Number,
+    default: 500,
   },
   max: {
     type: Number,
+    default: 10000,
   },
 });
 
-const userInput = ref(props.price);
-const min = ref(props.min);
-const max = ref(props.max);
+const emit = defineEmits(['update:modelValue']);
+
+const userInput = ref(props.modelValue);
+
+watch(() => props.modelValue, (newValue) => {
+  userInput.value = newValue;
+});
 
 const handleInputChange = () => {
   if (userInput.value > props.max) {
@@ -24,6 +30,7 @@ const handleInputChange = () => {
   } else if (userInput.value < props.min) {
     userInput.value = props.min;
   }
+  emit('update:modelValue', userInput.value);
 };
 </script>
 
@@ -32,15 +39,16 @@ const handleInputChange = () => {
     class="filter__label"
     for="price"
   >
-    <slot />
+    <slot/>
   </label>
   <input
     id="price"
     v-model="userInput"
     type="number"
     class="filter__input"
-    :max="max"
+    :placeholder="`от ${min} до ${max}`"
     :min="min"
+    :max="max"
     @change="handleInputChange"
   />
 </template>
@@ -49,6 +57,7 @@ const handleInputChange = () => {
 .filter__label {
   @apply block text-sm font-medium mt-1 mb-1;
 }
+
 .filter__input {
   @apply w-full border rounded-md p-2 text-sm focus:outline-none focus:ring focus:ring-green-300;
 }

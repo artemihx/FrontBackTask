@@ -17,7 +17,7 @@ import ReservedButton from "@/components/button/ReservedButton.vue";
       <li>Присмотр котоняни 24/7</li>
       <li>Видеонаблюдение 24/7</li>
     </ul>
-    <reserved-button/>
+    <reserved-button class="mx-auto px-10"/>
     <p class="room-price">15 руб. / сутки</p>
   </div>
 </template>

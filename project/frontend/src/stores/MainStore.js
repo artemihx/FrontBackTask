@@ -15,5 +15,6 @@ export const useMainStore = defineStore("mainStore", () => {
         localStorage.setItem('slogan', slogan.value);
         localStorage.setItem('city', city.value);
     };
+
     return { getMainInfo, city, slogan, data };
 });

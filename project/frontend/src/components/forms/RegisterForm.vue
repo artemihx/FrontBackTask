@@ -91,6 +91,7 @@ const goHome = () => {
       v-bind="phoneAttrs"
       id="phone"
       v-model="phone"
+      v-mask="'+7(###)###-##-##'"
       :class="{ 'error-input': errors.phone }"
       type="text"
       name="phone"
@@ -103,6 +104,7 @@ const goHome = () => {
     >
       {{ errors.phone }}
     </p>
+
     <input
       v-bind="passwordAttrs"
       id="password"

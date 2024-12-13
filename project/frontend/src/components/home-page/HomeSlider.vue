@@ -41,11 +41,11 @@
 import { ref } from "vue";
 
 const slides = ref([
-  "https://cataas.com/cat?width=800&height=600",
-  "https://cataas.com/cat?width=801&height=601",
-  "https://cataas.com/cat?width=802&height=602",
-  "https://cataas.com/cat?width=803&height=603",
-  "https://cataas.com/cat?width=804&height=605",
+  `${import.meta.env.VITE_API_URL}storage/rooms/photo1.jpeg`,
+  `${import.meta.env.VITE_API_URL}storage/rooms/photo2.png`,
+  `${import.meta.env.VITE_API_URL}storage/rooms/photo3.jpg`,
+  `${import.meta.env.VITE_API_URL}storage/rooms/photo4.jpg`,
+  `${import.meta.env.VITE_API_URL}storage/rooms/photo5.jpg`
 ]);
 
 const currentSlide = ref(0);

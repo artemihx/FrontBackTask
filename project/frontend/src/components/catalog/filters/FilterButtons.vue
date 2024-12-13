@@ -1,16 +1,26 @@
 <script setup>
-
+const emit = defineEmits(['apply', 'reset']);
 </script>
 
 <template>
   <div class="filter__buttons">
-    <button class="filter__button filter__button--apply">Применить</button>
-    <button class="filter__button filter__button--reset">Сбросить фильтр</button>
+    <button
+      class="filter__button filter__button--apply"
+      @click="emit('apply')"
+    >
+      Применить
+    </button>
+    <button
+      class="filter__button filter__button--reset"
+      @click="emit('reset')"
+    >
+      Сбросить фильтр
+    </button>
   </div>
 </template>
 
 <style scoped lang="scss">
-.filter{
+.filter {
   &__buttons {
     @apply flex space-x-2;
   }
