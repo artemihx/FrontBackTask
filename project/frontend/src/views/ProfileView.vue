@@ -4,7 +4,6 @@ import { onMounted } from 'vue';
 import { useAuthStore } from "@/stores/AuthStore.js";
 import {storeToRefs} from "pinia";
 import {useRoomsStore} from "@/stores/RoomsStore.js";
-import ReservationCard from "@/components/reservations/ReservationCard.vue";
 import ReservationCardSkeleton from "@/components/reservations/ReservationCardSkeleton.vue";
 
 
@@ -15,8 +14,8 @@ const { reservations } = storeToRefs(useRoomsStore());
 const { getReservations } = useRoomsStore();
 
 onMounted(async ()=>{
-  await userData();
   await getReservations();
+  await userData();
 })
 </script>
 <template>
@@ -30,7 +29,6 @@ onMounted(async ()=>{
         :is-loading="isLoading"
         :reservations="reservations"
       />
-
     </template>
 
 
@@ -47,5 +45,9 @@ onMounted(async ()=>{
   </div>
 </template>
 <style scoped lang="scss">
-
+.booking__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  @apply gap-x-10 gap-y-14;
+}
 </style>

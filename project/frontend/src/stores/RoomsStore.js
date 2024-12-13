@@ -10,10 +10,10 @@ export const useRoomsStore = defineStore('roomsStore', () => {
     const mainRooms = ref([]);
     const randomRooms = ref([]);
     const reservations = ref([]);
-
     const isLoading = ref(false);
     const { params } = storeToRefs(useCatalogStore());
     const { token } = storeToRefs(useAuthStore());
+    const authStore  = storeToRefs(useAuthStore())
 
     const getRooms = async (id = null) => {
         isLoading.value = true;
@@ -47,12 +47,18 @@ export const useRoomsStore = defineStore('roomsStore', () => {
             console.log(response.data);
             toastNotification('Заявка успешно отправлена!', 'success');
         } catch (error) {
-            toastNotification('Ошибка бронирования', 'error');
-            console.error('Ошибка бронирования:', error);
+            if (error.response && error.response.status === 422) {
+                toastNotification('Номер уже забронирован на указанные даты', 'error');
+            }else {
+                toastNotification('Ошибка бронирования', 'error');
+                console.error('Ошибка бронирования:', error);
+            }
+
         }
     };
 
     const getReservations = async () => {
+        authStore.isLoading.value = true
         try {
             const response = await api.get('bookings', {
                 headers: {
@@ -63,6 +69,9 @@ export const useRoomsStore = defineStore('roomsStore', () => {
             console.log(reservations.value)
         } catch (error) {
             console.error('Ошибка получение:', error);
+        }
+        finally {
+            authStore.isLoading.value = false;
         }
     };
 

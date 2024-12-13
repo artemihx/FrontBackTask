@@ -17,15 +17,27 @@ const calculateTotalPrice = () => {
 
 <template>
   <div class="reservation__card">
-    <img
-      src="@/assets/images/room-card-img.jpeg"
-      alt="Room Image"
-      class="reservation__image"
-    />
+    <router-link :to="`room/${reservation.room.id}`">
+      <img
+        v-if="reservation.room.photos && reservation.room.photos.length > 0"
+        :src="reservation.room.photos[0].photo"
+        alt="room-image"
+        class="reservation__image"
+      />
+      <img
+        v-else
+        src="@/assets/images/no-image.png"
+        alt="no-room-image"
+        class="reservation__image"
+      />
+    </router-link>
 
     <div class="reservation__details">
       <h3 class="reservation__title">
-        <span>{{ reservation.room.name }}</span>: {{ reservation.room.area }}м&sup2; - {{ calculateTotalPrice() }}руб.
+        <router-link :to="`room/${reservation.room.id}`">
+          <span>{{ reservation.room.name }}:</span>
+        </router-link>
+        {{ reservation.room.area }}м&sup2; - {{ calculateTotalPrice() }}руб.
       </h3>
 
       <div class="reservation__pets">
@@ -62,12 +74,12 @@ const calculateTotalPrice = () => {
 .reservation {
   &__card {
     @apply bg-white shadow-lg rounded-lg overflow-hidden flex flex-col;
-    height: 100%; // Ensures cards stretch to the full height
+    height: 100%;
   }
 
   &__image {
-    @apply w-full h-40 object-cover;
-    flex-shrink: 0; // Prevents the image from shrinking
+    @apply w-full h-56 object-cover;
+    flex-shrink: 0;
   }
 
   &__details {

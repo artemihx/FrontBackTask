@@ -60,8 +60,8 @@ input:-webkit-autofill:active,
 input:-webkit-autofill:focus {
   background-color: #ffffff !important;
   color: #555 !important;
-  -webkit-box-shadow: 0 0 0 1000px #d3d2ff inset !important;
-  -webkit-text-fill-color: #06459c !important;
+  -webkit-box-shadow: 0 0 0 1000px #fff1d2 inset !important;
+  -webkit-text-fill-color: #9c6006 !important;
 }
 
 input::-webkit-outer-spin-button,

@@ -14,7 +14,6 @@ import ReservationCard from "@/components/reservations/ReservationCard.vue";
 
 <template>
   <section
-    v-if="!isLoading"
     class="booking"
   >
     <h2 class="booking__title">Ваши забронированные комнаты:</h2>
