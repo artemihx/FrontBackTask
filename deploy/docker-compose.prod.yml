@@ -17,6 +17,8 @@ services:
         dockerfile: ./deploy/backend-proxy/Dockerfile
       container_name: backend-proxy
       hostname: backend-proxy
+      volumes:
+        - ../project/backend/storage/app/public/:/var/www/public/storage/app/public
       networks:
         - network
 
@@ -24,8 +26,16 @@ services:
       build:
         context: ../
         dockerfile: ./deploy/php/Dockerfile
+      command: >
+        sh -c "chown -R www-data:www-data /var/www/public &&
+               chmod -R 755 /var/www/public &&
+               php-fpm"
+      volumes:
+        - ../project/backend/storage/app/public/:/var/www/public/storage/app/public
       networks:
         - network
+      depends_on:
+        - postgres
 
     frontend:
       build:
@@ -38,6 +48,7 @@ services:
 
     postgres:
       image: postgres:alpine
+      container_name: postgres
       environment:
         POSTGRES_DB: ${POSTGRES_DB:-postgres}
         POSTGRES_USER: ${POSTGRES_USER:-postgres}

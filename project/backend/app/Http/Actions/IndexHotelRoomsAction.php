@@ -20,7 +20,12 @@ public static function execute(IndexHotelRoomRequest $request)
     }
 
     if ($request->has('area')) {
-        $query->whereRaw('width * length = ?', [$request->input('area')]);
+        $areas = $request->input('area');
+        $query->where(function ($query) use ($areas) {
+            foreach ($areas as $area) {
+                $query->orWhereRaw('width * length = ?', [$area]);
+            }
+        });
     }
 
     if ($request->has('equipment')) {

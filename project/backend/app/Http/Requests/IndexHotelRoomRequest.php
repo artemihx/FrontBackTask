@@ -18,7 +18,7 @@ class IndexHotelRoomRequest extends FormRequest
         return [
             'min_price' => 'nullable|numeric|min:0',
             'max_price' => 'nullable|numeric|min:0',
-            'area' => 'nullable|numeric|min:0',
+            'area' => 'nullable|array|min:0',
             'equipment' => ['nullable', 'array', new EquipmentExists()],
             'on_main' => 'nullable|boolean',
             'sort_by' => 'nullable|in:on_main,price',

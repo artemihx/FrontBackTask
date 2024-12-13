@@ -19,7 +19,9 @@ class BookingController extends Controller
     // Получить список всех бронирований для текущего пользователя
     public function index()
     {
-        $bookings = Booking::where('user_id', Auth::id())->with('room', 'pets')->get();
+        $bookings = Booking::where('user_id', Auth::id())
+            ->with(['room.photos', 'pets'])
+            ->get();
         return response()->json($bookings);
     }
 
