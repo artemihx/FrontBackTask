@@ -56,6 +56,20 @@ export const useRoomsStore = defineStore('roomsStore', () => {
 
         }
     };
+    const deleteBookingRoom = async (id) => {
+        try {
+            const response = await api.delete(`bookings/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token.value}`,
+                },
+            });
+            console.log(response.data);
+            toastNotification('Бронь успешно отменена!', 'success');
+        } catch (error) {
+                toastNotification('Ошибка отмены брони', 'error');
+                console.error('Ошибка бронирования:', error);
+        }
+    };
 
     const getReservations = async () => {
         authStore.isLoading.value = true
@@ -83,7 +97,6 @@ export const useRoomsStore = defineStore('roomsStore', () => {
     const getMainRooms = async () => {
         try {
             const response = (await api.get('rooms')).data;
-            // Фильтруем комнаты, у которых on_main === true
             mainRooms.value = response.filter(room => room.on_main === true);
             console.log(mainRooms.value);
         } catch (error) {
@@ -98,6 +111,7 @@ export const useRoomsStore = defineStore('roomsStore', () => {
         isLoading,
         getRooms,
         bookingRoom,
+        deleteBookingRoom,
         getReservations,
         getRandomRooms,
         getMainRooms,

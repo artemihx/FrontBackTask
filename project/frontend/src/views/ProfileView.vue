@@ -14,8 +14,8 @@ const { reservations } = storeToRefs(useRoomsStore());
 const { getReservations } = useRoomsStore();
 
 onMounted(async ()=>{
-  await getReservations();
   await userData();
+  await getReservations();
 })
 </script>
 <template>

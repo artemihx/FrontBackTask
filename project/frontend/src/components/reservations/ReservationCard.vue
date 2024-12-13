@@ -1,4 +1,6 @@
 <script setup>
+import {useRoomsStore} from "@/stores/RoomsStore.js";
+
 const props = defineProps({
   reservation: {
     type: Object,
@@ -6,17 +8,27 @@ const props = defineProps({
   },
 });
 
+const { deleteBookingRoom } = useRoomsStore()
+const { getReservations } = useRoomsStore();
+
 const calculateTotalPrice = () => {
   const startDate = new Date(props.reservation.start_date);
   const endDate = new Date(props.reservation.end_date);
   const days = (endDate - startDate) / (1000 * 60 * 60 * 24);
   return days * parseFloat(props.reservation.room.price);
 };
+const deleteBooking = async (id) =>{
+  await deleteBookingRoom(id);
+  await getReservations();
+}
 </script>
 
 
 <template>
-  <div class="reservation__card">
+  <div
+    v-if="reservation"
+    class="reservation__card"
+  >
     <router-link :to="`room/${reservation.room.id}`">
       <img
         v-if="reservation.room.photos && reservation.room.photos.length > 0"
@@ -62,7 +74,12 @@ const calculateTotalPrice = () => {
         </p>
       </div>
 
-      <button class="reservation__cancel-button">Отменить</button>
+      <button
+        class="reservation__cancel-button"
+        @click=deleteBooking(reservation.id)
+      >
+        Отменить
+      </button>
     </div>
   </div>
 </template>
