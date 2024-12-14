@@ -27,7 +27,6 @@ export const useRoomsStore = defineStore('roomsStore', () => {
             // Если `id` не передан, запрашиваем все комнаты с фильтрами
             const response = (await api.get('rooms', { params: params.value })).data;
             rooms.value = response;
-            console.log(rooms.value);
         } catch (error) {
             console.error('Ошибка загрузки комнат:', error);
             throw error;
@@ -44,7 +43,6 @@ export const useRoomsStore = defineStore('roomsStore', () => {
                     Authorization: `Bearer ${token.value}`,
                 },
             });
-            console.log(response.data);
             toastNotification('Заявка успешно отправлена!', 'success');
         } catch (error) {
             if (error.response && error.response.status === 422) {
@@ -63,7 +61,6 @@ export const useRoomsStore = defineStore('roomsStore', () => {
                     Authorization: `Bearer ${token.value}`,
                 },
             });
-            console.log(response.data);
             toastNotification('Бронь успешно отменена!', 'success');
         } catch (error) {
                 toastNotification('Ошибка отмены брони', 'error');
@@ -80,7 +77,6 @@ export const useRoomsStore = defineStore('roomsStore', () => {
                 },
             });
             reservations.value = response.data
-            console.log(reservations.value)
         } catch (error) {
             console.error('Ошибка получение:', error);
         }
@@ -92,13 +88,11 @@ export const useRoomsStore = defineStore('roomsStore', () => {
     const getRandomRooms = async () => {
         const response = (await api.get(`randRooms`)).data
         randomRooms.value = response;
-        console.log(response)
     };
     const getMainRooms = async () => {
         try {
             const response = (await api.get('rooms')).data;
             mainRooms.value = response.filter(room => room.on_main === true);
-            console.log(mainRooms.value);
         } catch (error) {
             console.error('Ошибка загрузки главных комнат:', error);
         }

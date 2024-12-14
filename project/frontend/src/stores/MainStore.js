@@ -10,7 +10,6 @@ export const useMainStore = defineStore("mainStore", () => {
         const response = (await api.get(`header`)).data
         slogan.value = response.slogan;
         city.value = response.city;
-        console.log(response)
         data.value = response;
         localStorage.setItem('slogan', slogan.value);
         localStorage.setItem('city', city.value);

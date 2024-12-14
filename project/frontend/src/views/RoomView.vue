@@ -31,7 +31,6 @@ const loadRoom = async () => {
   room.value = await getRooms(route.params.id).catch((error) => {
     console.log('Ошибка загрузки комнаты:', error);
   });
-  console.log('Комната:', room.value);
 };
 
 
@@ -41,7 +40,6 @@ onMounted(async () => {
   room.value = await getRooms(route.params.id).catch((error) => {
     console.log('Ошибка загрузки комнаты:', error);
   });
-  console.log('Комната:', room.value);
 });
 
 watch(() => route.params.id, async () => {

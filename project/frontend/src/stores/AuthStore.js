@@ -16,7 +16,6 @@ export const useAuthStore = defineStore('auth', () => {
     const login = async (credentials) => {
         try {
             const response = await api.post(`login`, credentials);
-            console.log(response.data)
 
             token.value = response.data.user_token;
             localStorage.setItem('token', token.value);
@@ -49,8 +48,6 @@ export const useAuthStore = defineStore('auth', () => {
             const response = await api.post("register", formData, {
                 headers: { "Content-Type": "multipart/form-data" },
             });
-            console.log(response);
-            console.log(response.data);
 
             token.value = response.data.user_token;
             localStorage.setItem('token', token.value);
@@ -110,7 +107,6 @@ export const useAuthStore = defineStore('auth', () => {
                 }
             })
             user.value = response.data
-            console.log(user.value)
         }
         catch (error) {
             console.error('Ошибка получения данных о пользователе', error);
@@ -127,7 +123,6 @@ export const useAuthStore = defineStore('auth', () => {
                 },
             });
             user.value = response.data;
-            console.log(user.value)
             toastNotification('Данные успешно обновлены', 'success');
         } catch (error) {
             console.error('Ошибка при обновлении данных пользователя', error);

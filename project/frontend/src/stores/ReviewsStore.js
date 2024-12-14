@@ -8,7 +8,6 @@ export const useReviewsStore = defineStore('reviewsStore', () =>{
     const getRandomReviews = async () => {
         const response = (await api.get('randReviews')).data
         randomReviews.value = response
-        console.log(response)
     }
     return{
         randomReviews,

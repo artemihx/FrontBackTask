@@ -51,14 +51,11 @@ const slides = ref([
 const currentSlide = ref(0);
 
 const nextSlide = () => {
-  console.log("Next Slide clicked!"); // Лог для проверки
   currentSlide.value = (currentSlide.value + 1) % slides.value.length;
 };
 
 const prevSlide = () => {
-  console.log("Previous Slide clicked!"); // Лог для проверки
-  currentSlide.value =
-      (currentSlide.value - 1 + slides.value.length) % slides.value.length;
+  currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length;
 };
 
 const getSlideStyle = (index) => {
