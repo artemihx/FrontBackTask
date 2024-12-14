@@ -1,6 +1,16 @@
 <script setup>
 
 import HomeReviewItem from "@/components/home-page/HomeReviewItem.vue";
+import {useReviewsStore} from "@/stores/ReviewsStore.js";
+import {storeToRefs} from "pinia";
+import {onMounted} from "vue";
+
+const { getRandomReviews } = useReviewsStore()
+const { randomReviews } = storeToRefs(useReviewsStore())
+
+onMounted(async () =>{
+  await getRandomReviews()
+})
 </script>
 
 <template>
@@ -9,13 +19,17 @@ import HomeReviewItem from "@/components/home-page/HomeReviewItem.vue";
     class="reviews"
   >
     <h2>Отзывы наших клиентов</h2>
-    <div class="review__container">
+    <div
+      v-if="randomReviews"
+      class="review__container"
+    >
       <home-review-item
-        v-for="review in 5"
-        :key=review
+        v-for="review in randomReviews"
+        :key=review.id
         :review="review"
       />
     </div>
+    <div v-else>Отзывов пока нету</div>
   </section>
 </template>
 

@@ -36,9 +36,8 @@ const authStore = useAuthStore();
       class="flex gap-1"
     >
       <router-link
-        to="register"
+        to="/register"
         class="header__link"
-        href="#"
       >
         Вход
         &frasl;

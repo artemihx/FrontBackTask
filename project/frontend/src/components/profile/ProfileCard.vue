@@ -5,6 +5,7 @@ import { useAuthStore } from '@/stores/AuthStore';
 import ProfileCardForm from "@/components/profile/ProfileCardForm.vue";
 import ProfileCardInfo from "@/components/profile/ProfileCardInfo.vue";
 import ProfileCardAvatar from "@/components/profile/ProfileCardAvatar.vue";
+import {storeToRefs} from "pinia";
 
 const props = defineProps({
   user: {
@@ -18,6 +19,8 @@ const props = defineProps({
 });
 
 const authStore = useAuthStore();
+
+const { isAdmin } = storeToRefs(useAuthStore())
 
 const editing = ref(false);
 const errors = ref({});
@@ -86,6 +89,7 @@ const saveChanges = async () => {
   >
     <profile-card-avatar
       :photo="user.photo"
+      :is-admin="isAdmin"
     />
 
     <profile-card-info

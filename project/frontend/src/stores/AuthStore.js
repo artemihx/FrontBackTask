@@ -10,6 +10,8 @@ export const useAuthStore = defineStore('auth', () => {
     const loginError = ref(null);
     const user = ref(null);
     const isLoading = ref(false);
+    const isAdmin = ref(localStorage.getItem('admin') === 'true');
+    const authStore = useAuthStore()
 
     const login = async (credentials) => {
         try {
@@ -20,7 +22,15 @@ export const useAuthStore = defineStore('auth', () => {
             localStorage.setItem('token', token.value);
 
             loginError.value = null;
-            await toastNotification("Вы авторизовались!","success")
+
+            if (credentials.email === 'admin@admin.com' && credentials.password === 'superadmin') {
+                await toastNotification("Добро пожаловать, Администратор", "success");
+                localStorage.setItem('admin', 'true');
+                isAdmin.value = true;
+            } else {
+                await toastNotification("Вы авторизовались!", "success");
+            }
+
             setTimeout(()=>{
                 router.push('/')
             },2000)
@@ -81,7 +91,10 @@ export const useAuthStore = defineStore('auth', () => {
                 }
             })
             token.value = null;
+            isAdmin.value = false
+
             localStorage.removeItem('token');
+            localStorage.setItem('admin','false');
         }
         catch (error) {
             console.error('Ошибка выхода', error);
@@ -150,6 +163,7 @@ export const useAuthStore = defineStore('auth', () => {
         loginError,
         isAuthenticated,
         isLoading,
+        isAdmin,
         login,
         register,
         logout,

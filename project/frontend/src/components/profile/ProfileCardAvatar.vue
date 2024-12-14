@@ -3,14 +3,26 @@ defineProps({
   photo:{
     type:[String,null],
     required: true
+  },
+  isAdmin:{
+    type:Boolean,
+    required:true
   }
 })
+
+
 </script>
 
 <template>
   <div class="profile__avatar">
     <img
-      v-if="photo === null"
+      v-if="isAdmin"
+      src="@/assets/images/admin.jpg"
+      alt="User Avatar"
+      class="profile__avatar-image"
+    />
+    <img
+      v-else-if="photo === null"
       src="@/assets/images/no-avatar.jpg"
       alt="User Avatar"
       class="profile__avatar-image"

@@ -1,11 +1,17 @@
 <script setup>
-
+defineProps({
+  review:{
+    type: Object,
+    required: true
+  }
+})
 </script>
 
 <template>
   <div class="review">
-    <p>"Мой кот был в восторге, обязательно приедем снова!"</p>
-    <span>- Анна</span>
+    <p>{{ review.content }}</p>
+    <!--на бэке нету получения данных о пользвателе-->
+    <span>- Анна, оценка: {{ review.rating }}</span>
   </div>
 </template>
 
