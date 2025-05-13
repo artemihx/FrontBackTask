@@ -26,5 +26,4 @@ export const registrationSchema = yup.object({
         .test("fileType", "Файл должен быть формата jpeg или png", (file) => {
             return !file || (file && ["image/jpeg", "image/png"].includes(file.type));
         }),
-
 });

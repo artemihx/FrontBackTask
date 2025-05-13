@@ -11,7 +11,6 @@ export const useAuthStore = defineStore('auth', () => {
     const user = ref(null);
     const isLoading = ref(false);
     const isAdmin = ref(localStorage.getItem('admin') === 'true');
-    const authStore = useAuthStore()
 
     const login = async (credentials) => {
         try {
@@ -30,9 +29,7 @@ export const useAuthStore = defineStore('auth', () => {
                 await toastNotification("Вы авторизовались!", "success");
             }
 
-            setTimeout(()=>{
-                router.push('/')
-            },2000)
+                await router.push('/profile')
         } catch (error) {
             if (error.response && error.response.status === 401) {
                 loginError.value = 'Неверные введеные данные';
